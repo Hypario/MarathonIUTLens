@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Serie extends Model
 {
+    protected $fillable = [
+        'nom',
+    ];
+
     // A serie has many episodes
     public function episodes() {
         return $this->hasMany("App\Episode", "serie_id");
@@ -18,7 +22,7 @@ class Serie extends Model
 
     // A serie has many genres
     public function genres() {
-        return $this->hasMany("App\Genre", "serie_id");
+        return $this->belongsToMany("App\Genre");
     }
 
 }
