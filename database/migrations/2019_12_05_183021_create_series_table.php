@@ -22,7 +22,8 @@ class CreateSeriesTable extends Migration
             $table->string('statut', 64);
             $table->date('premiere');
             $table->string('urlImage');
-            $table->text('avis');
+            $table->text('avis')->nullable();
+            $table->text('urlAvis')->nullable();
             $table->timestamps();
         });
     }
