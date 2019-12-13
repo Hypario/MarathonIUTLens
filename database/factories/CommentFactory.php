@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Comment::class, function (Faker $faker) {
     return [
         'content' => $faker->text(),
-        'positive' => $faker->boolean,
+        'note' => $faker->numberBetween(0,10),
         'validated' => $faker->boolean(70),
     ];
 });
