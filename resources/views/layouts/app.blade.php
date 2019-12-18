@@ -11,11 +11,11 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-<header>
+<header class="header">
     <a href="{{ url('/') }}">
         {{ config('app.name', 'Seeries') }}
     </a>
-</header>
+
 <!-- Authentication Links -->
 <nav>
     <ul>
@@ -35,6 +35,7 @@
         @endguest
     </ul>
 </nav>
+</header>
 <div id="main">
     @yield('content')
 </div>
