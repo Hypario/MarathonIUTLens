@@ -28,7 +28,7 @@
     </div>
 
     <div>
-        <p><img src={{ $series->urlImage }} /></p>
+        <p><img src={{ url($series->urlImage) }} /></p>
     </div>
 
     @if($series->avis = null)
