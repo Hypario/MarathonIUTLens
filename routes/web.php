@@ -20,4 +20,4 @@ Auth::routes();
 
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/random', 'MainController@random')->name('home.random');
-
+Route::get('/popular', 'MainController@popular')->name('home.popular');
