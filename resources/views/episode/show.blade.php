@@ -10,7 +10,7 @@
         <p>Episode n°{{$episode->numero}}; {{$episode->nom}}.</p>
     </div>
     <div>
-        <p><img src={{ $episode->urlImage }} /></p>
+        <p><img src={{ url($episode->urlImage) }} /></p>
     </div>
     <div>
 

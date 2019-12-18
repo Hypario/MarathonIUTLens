@@ -14,7 +14,7 @@
         <div>
             <p><strong>Episode n°</strong>{{$episode->numero}}</p>
             <p>Nom : {{$episode->nom}}</p>
-            <a href="/serie/{{$serie->id}}/{{$episode->numero}}" ><img src={{$episode->urlImage }} /></a>
+            <a href="/serie/{{$serie->id}}/{{$episode->numero}}" ><img src={{ url($episode->urlImage) }} /></a>
 
         </div>
     @endforeach
