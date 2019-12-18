@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Episode;
 use App\Serie;
 
@@ -13,9 +12,15 @@ class SerieController extends Controller
 
         $series = Serie::find($id);
 
+        $episodes = Episode::select("saison", "nom", "numero", "urlImage")
+            ->where("serie_id","=",$id)
+            ->get();
+
+        $saisons = $episodes->groupBy('saison');
+
         $comments = $series->comments()->get();
 
-        return view('serie.show', compact("series", "comments"));
+        return view('serie.show', compact("series", "saisons", "comments"));
     }
 
     public function episode($num_serie,$numero) {

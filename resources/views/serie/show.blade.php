@@ -37,18 +37,39 @@
         </div>
     @else
         <div>
-            <p><strong>Avis de la rédaction : </strong> d'avis de la rédaction disponible</p>
+            <p><strong>Avis de la rédaction : </strong> Pas encore d'avis de la rédaction disponible :(</p>
         </div>
     @endif
     @if($series->urlAvis != null)
-        <div>
-            <p><strong>Vidéo critique : </strong>{{$series->urlAvis}}</p>
-        </div>
+    <div>
+        <p><strong>Vidéo critique : </strong></p>
+
+        <p>
+            <video controls width="250">
+
+                <source src={{$series->urlAvis}}
+                        type="video/mp4">
+                Désolé, votre navigateur ne supporte pas les vidéos :(.
+            </video>
+        </p>
+    </div>
     @else
         <div>
-            <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible</p>
+            <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible :(</p>
         </div>
     @endif
+
+    <div id = "episodes">
+        @foreach($saisons as $saison => $episodes )
+            <p>Saison n°{{ $saison }}</p>
+            @foreach($episodes as $episode)
+                <div>
+                    <img src={{ $episode->urlImage }} />
+                    Episode n°{{$episode->numero}} {{$episode->nom}}
+                </div>
+            @endforeach
+        @endforeach
+    </div>
 
     @if (!$comments->isEmpty())
         <h1>Les commentaires :</h1>
