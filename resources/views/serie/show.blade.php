@@ -8,7 +8,7 @@
     </div>
     <div>
 
-        <p><strong>Resume : </strong>{!! html_entity_decode($series->resume)!!}</p>
+        <p><strong>Résumé : </strong>{!! html_entity_decode($series->resume)!!}</p>
     </div>
     <div>
 
