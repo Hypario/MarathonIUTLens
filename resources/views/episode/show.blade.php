@@ -2,6 +2,9 @@
 @section('title',$serie->nom,'Episode n°',$episode->numero)
 
 @section('content')
+    <di>
+        <a href="{{ route('serie.show',[$serie->id]) }}">retour à la série.</a>
+    </di>
     <div>
         <p>{{$serie->nom}}, saison {{$episode->saison}}, épisode n°{{$episode->numero}}; {{$episode->nom}}.</p>
     </div>
