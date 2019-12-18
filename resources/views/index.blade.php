@@ -22,7 +22,7 @@
             @endforeach
         </ul>
     @else
-        <h3>aucune serie</h3>
+        <h3>Aucune série n'est présente</h3>
     @endif
 
 @endsection
