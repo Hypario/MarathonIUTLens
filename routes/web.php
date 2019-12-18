@@ -28,3 +28,5 @@ Route::get('/reviews', 'MainController@reviews')->name('home.reviews');
 Route::get('/serie', 'SerieController@index')->name('serie.index');
 Route::get('/serie/{serie}','SerieController@show')->name('serie.show');
 Route::get('/serie/{serie}/{episode}','SerieController@episode')->name('episode.show');
+
+Route::get("/userpage","MainController@user")->name('user.home');
