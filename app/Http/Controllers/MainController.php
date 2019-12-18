@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Episode;
 use App\Serie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -63,7 +64,19 @@ class MainController extends Controller
             $data["stats"]["nbcomm"] = Comment::where("user_id","=",$user->id)->count("*");
 
             // Récupération commentaires
-            $data["comments"] = Comment::where("user_id","=",$user->id)->select("*")->get();
+
+            $data["comments"] = Comment::where("user_id","=",$user->id)->select("*")->orderBy("serie_id")->get();
+
+            // récupération des séries
+
+            $data["series"] = Serie::all();
+
+            // récupération séries vues
+
+         //   $data["seriesvues"] = DB::table("seen")->select("id_serie")->where("user_id","=",$user->id)->get();
+
+            $data["seriesvues"] = Episode::whereIn("id", DB::table("seen")->select("episode_id")->where("user_id","=",$user->id))->select("serie_id")->groupBy("serie_id")->get();
+
 
             // Récupération durée passée
             $data["stats"]["duree"] = DB::select(DB::raw("SELECT SUM(duree)/60 AS somme FROM episodes JOIN seen ON episodes.id = seen.user_id WHERE seen.user_id = ".$user->id))[0]->somme;
