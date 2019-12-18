@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Episode;
 use App\Serie;
-use App\User;
-use Illuminate\Foundation\Console\Presets\Vue;
-use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -27,12 +23,11 @@ class MainController extends Controller
         return view("index", compact("series"));
     }
 
-    public function popular(){
-        //tri des series par les plus vue
-        $series = Serie::all();
-        $episodes = Episode::all();
+    public function reviews() {
 
+        $retour = Serie::withCount('comments')->orderBy('comments_count', 'desc')->get();
 
-        return view("popular",compact("series"));
+        return view("reviews", compact("retour"));
     }
+
 }
