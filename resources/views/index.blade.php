@@ -2,7 +2,7 @@
 @section('title','Accueil')
 @section('content')
 
-    Acceuil
+    Accueil
     <br />
     <h2>La liste des series</h2>
 

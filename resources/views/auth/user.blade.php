@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title',$data["user"]->name)
 @section('content')
 Bienvenue {{$data["user"]->name}} !<br>
 

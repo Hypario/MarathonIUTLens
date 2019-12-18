@@ -6,11 +6,12 @@
         <a href="{{ route('serie.show',[$serie->id]) }}">retour à la série.</a>
     </di>
     <div>
-        <p>{{$serie->nom}}, saison {{$episode->saison}}, épisode n°{{$episode->numero}}; {{$episode->nom}}.</p>
+        <p>{{$serie->nom}}, saison {{$episode->saison}}</p>
+        <p>Episode n°{{$episode->numero}}; {{$episode->nom}}.</p>
     </div>
     <div>
 
-        <p><strong>Resume : </strong>{!! html_entity_decode($episode->resume)!!}</p>
+        <p><strong>Résumé : </strong>{!! html_entity_decode($episode->resume)!!}</p>
     </div>
     <div>
 
