@@ -13,7 +13,7 @@
 <body>
 <header>
     <a href="{{ url('/') }}">
-        {{ config('app.name', 'Laravel') }}
+        {{ config('app.name', 'Seeries') }}
     </a>
 </header>
 <!-- Authentication Links -->
