@@ -6,6 +6,23 @@ Bienvenue {{$data["user"]->name}} !<br>
     Vous avez posté {{$data["stats"]["nbcomm"]}} commentaire(s) et avez passé {{$data["stats"]["duree"]}} heure(s) pour regarder des épisodes :smile:<br>
     Vous avez vu {{$data["stats"]["epvu"]}} épisode(s)<br>
 
+    @if($data['user']->administrateur == 1)
+        <b>Vous êtes administrateur ✊</b>
+
+        <h2>Administration des Commentaires non-validés</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+    @endif
 
 
     <h2>Les séries que vous avez vu :</h2>

@@ -64,7 +64,18 @@ class MainController extends Controller
     public function  user() {
         if ($user = Auth::user()) {
 
+
             $data = array();
+
+            if ($user->administrateur == 1) {
+                //$data["comVerif"] = Comment::where("");
+
+
+
+            }
+
+
+
             $data["user"] = $user;
 
             $data["stats"] = array();
