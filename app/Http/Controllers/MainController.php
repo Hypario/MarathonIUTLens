@@ -68,11 +68,8 @@ class MainController extends Controller
             $data = array();
 
             if ($user->administrateur == 1) {
-                //$data["comVerif"] = Comment::where("");
-
-
-
-            }
+                $data["comVerif"] = Comment::where("validated","=",0)->select("*")->get();
+                }
 
 
 

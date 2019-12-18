@@ -11,7 +11,9 @@ Bienvenue {{$data["user"]->name}} !<br>
 
         <h2>Administration des Commentaires non-validés</h2>
 
-
+        @foreach($data['comVerif'] as $comv)
+            {{$comv->created_at}} > {{$comv->content}} / <a href="#">Valider</a> <a href="#">Supprimer</a><br>
+        @endforeach
 
 
 
