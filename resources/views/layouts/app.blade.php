@@ -23,7 +23,7 @@
             <li><a href="{{ route('login') }}">Connexion</a></li>
             <li><a href="{{ route('register') }}">Inscription</a></li>
         @else
-            <li> Bonjour <a href = {{'userpage'}}>{{ Auth::user()->name }}</a></li>
+            <li> Bonjour <a href = {{ route('user.home') }}>{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
