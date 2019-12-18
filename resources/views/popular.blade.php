@@ -1,11 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
+
+    <h2>La liste des series</h2>
 
     Acceuil
     <br />
-    <h2>La liste des series</h2>
-
     @if(!empty($series))
         <ul>
 
@@ -25,4 +24,4 @@
         <h3>aucune serie</h3>
     @endif
 
-@endsection
+@endsection()
