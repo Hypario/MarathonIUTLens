@@ -13,7 +13,8 @@
     <div>
 
         <p><strong>Langue : </strong>{{$series->langue}}</p>
-    </div><div>
+    </div>
+    <div>
 
         <p><strong>Note : </strong>{{$series->note}}</p>
     </div>
@@ -40,13 +41,23 @@
         </div>
     @endif
     @if($series->urlAvis != null)
-    <div>
-        <p><strong>Vidéo critique : </strong>{{$series->urlAvis}}</p>
-    </div>
+        <div>
+            <p><strong>Vidéo critique : </strong>{{$series->urlAvis}}</p>
+        </div>
     @else
         <div>
             <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible</p>
         </div>
+    @endif
+
+    @if (!$comments->isEmpty())
+        <h1>Les commentaires :</h1>
+        @foreach($comments as $comment)
+            <h2>{{ $comment->utilisateur->name }}</h2>
+            <p>{{ $comment->content }}</p>
+        @endforeach
+    @else
+        <h1>Aucun commentaire pour cette série</h1>
     @endif
 
 @endsection

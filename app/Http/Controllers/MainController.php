@@ -21,14 +21,22 @@ class MainController extends Controller
         return view("index", compact("series"));
     }
 
-    public function random()
+    /**
+     * Random series showed in the landing page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    private function random()
     {
         $series = Serie::inRandomOrder()->get();
 
         return view("index", compact("series"));
     }
 
-    public function popular()
+    /**
+     * Popular series showed in the landing page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    private function popular()
     {
         $series = DB::table("series")
             ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume"))
@@ -41,7 +49,11 @@ class MainController extends Controller
         return view("index", compact("series"));
     }
 
-    public function reviews() {
+    /**
+     * Most reviewed series in the landing page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    private function reviews() {
 
         $retour = Serie::withCount('comments')->orderBy('comments_count', 'desc')->get();
 
