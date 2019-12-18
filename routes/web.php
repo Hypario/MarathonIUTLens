@@ -23,3 +23,4 @@ Route::get('/random', 'MainController@random')->name('home.random');
 Route::get('/serie', 'SerieController@index')->name('serie.index');
 Route::get('/serie/{serie}','SerieController@show')->name('serie.show');
 Route::get('/reviews', 'MainController@reviews')->name('home.reviews');
+Route::get("/userpage","MainController@user")->name('user.home');
