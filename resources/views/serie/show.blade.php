@@ -27,7 +27,7 @@
     </div>
 
     <div>
-        <p>Image : <img src={{ $series->urlImage }}/>
+        <p>Image : <img src={{ $series->urlImage }} /></p>
     </div>
 
     <div>
