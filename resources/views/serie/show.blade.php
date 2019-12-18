@@ -36,16 +36,25 @@
         </div>
     @else
         <div>
-            <p><strong>Avis de la rédaction : </strong> d'avis de la rédaction disponible</p>
+            <p><strong>Avis de la rédaction : </strong> Pas encore d'avis de la rédaction disponible :(</p>
         </div>
     @endif
     @if($series->urlAvis != null)
     <div>
-        <p><strong>Vidéo critique : </strong>{{$series->urlAvis}}</p>
+        <p><strong>Vidéo critique : </strong></p>
+
+        <p>
+            <video controls width="250">
+
+                <source src={{$series->urlAvis}}
+                        type="video/mp4">
+                Désolé, votre navigateur ne supporte pas les vidéos :(.
+            </video>
+        </p>
     </div>
     @else
         <div>
-            <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible</p>
+            <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible :(</p>
         </div>
     @endif
 
