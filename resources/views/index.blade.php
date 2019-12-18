@@ -6,5 +6,4 @@
     <br />
     on doit y voir les histoires.
 
-
 @endsection

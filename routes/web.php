@@ -19,5 +19,5 @@ use App\Serie;
 Auth::routes();
 
 Route::get('/', 'MainController@index')->name('home');
-
+Route::get('/random', 'MainController@random')->name('home.random');
 

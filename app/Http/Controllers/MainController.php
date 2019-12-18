@@ -17,4 +17,11 @@ class MainController extends Controller
 
         return view("index", compact("series"));
     }
+
+    public function random() {
+        $series = Serie::inRandomOrder()->get();
+
+        return view("index", compact("series"));
+    }
+
 }
