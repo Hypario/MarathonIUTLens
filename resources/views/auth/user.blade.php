@@ -29,7 +29,7 @@ Bienvenue {{$data["user"]->name}} !<br>
 
     <h2>Les séries que vous avez vu :</h2>
     @foreach($data["seriesvues"] as $sv)
-        {{$data["series"][$sv->serie_id-1]->nom}}<br>
+        <a href={{route('serie.show',$sv->serie_id)}}>{{$data["series"][$sv->serie_id-1]->nom}}</a><br>
     @endforeach
 
     <h2>Vos commentaires :</h2>
