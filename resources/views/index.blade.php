@@ -11,7 +11,7 @@
 
             @foreach($series as $serie)
                 <li>{{$serie->nom}}
-                    <br>{{$serie->resume}}
+                    <br>{!! html_entity_decode($serie->resume)!!}
                     <br>{{$serie->langue}}
                     <br>{{$serie->note}}
                     <br>{{$serie->statut}}
@@ -22,7 +22,7 @@
             @endforeach
         </ul>
     @else
-        <h3>aucune serie</h3>
+        <h3>Aucune série n'est présente</h3>
     @endif
 
 @endsection
