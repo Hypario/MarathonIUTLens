@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $fillable = ['content', 'note'];
+
     // A comment is written by an user
     public function utilisateur() {
         return $this->belongsTo("App\User", "user_id");

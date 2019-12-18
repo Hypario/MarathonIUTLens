@@ -26,4 +26,9 @@ Route::get('/serie', 'SerieController@index')->name('serie.index');
 Route::get('/serie/{serie}','SerieController@show')->name('serie.show');
 Route::get('/serie/{serie}/{episode}','SerieController@episode')->name('episode.show');
 
+// comments
+Route::post('/comment/{serie}', "CommentController@create")->name("comment.post");
+Route::post('/comment/{comment}/valid', "CommentController@valid")->name("comment.valid");
+Route::post('/comment/{comment}/reject', "CommentController@reject")->name("comment.reject");
+
 Route::get("/userpage","MainController@user")->name('user.home');
