@@ -1,17 +1,16 @@
 @extends('layouts.app')
-
 @section('content')
+
+    <h2>La liste des series</h2>
 
     Acceuil
     <br />
-    <h2>La liste des series</h2>
-
     @if(!empty($series))
         <ul>
 
             @foreach($series as $serie)
                 <li>{{$serie->nom}}
-                    <br>{!! html_entity_decode($serie->resume)!!}
+                    <br>{{$serie->resume}}
                     <br>{{$serie->langue}}
                     <br>{{$serie->note}}
                     <br>{{$serie->statut}}
@@ -22,7 +21,7 @@
             @endforeach
         </ul>
     @else
-        <h3>Aucune série n'est présente</h3>
+        <h3>aucune serie</h3>
     @endif
 
-@endsection
+@endsection()

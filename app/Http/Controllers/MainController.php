@@ -39,4 +39,11 @@ class MainController extends Controller
         return view("index", compact("series"));
     }
 
+    public function reviews() {
+
+        $retour = Serie::withCount('comments')->orderBy('comments_count', 'desc')->get();
+
+        return view("reviews", compact("retour"));
+    }
+
 }

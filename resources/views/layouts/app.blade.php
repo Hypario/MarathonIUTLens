@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Seeries - @yield('title')</title>
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
@@ -24,12 +24,6 @@
             <li><a href="{{ route('register') }}">Register</a></li>
         @else
             <li> Bonjour {{ Auth::user()->name }}</li>
-            @if (Auth::user())
-                <li><a href="{{ route('creer_histoire') }}">Ajouter une histoire</a></li>
-                <li><a href="{{ route('creer_chapitre') }}">Ajouter un chapitre</a></li>
-                <li><a href="{{ route('lier_chapitre') }}">Lier un chapitre</a></li>
-
-            @endif
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -44,6 +38,12 @@
 <div id="main">
     @yield('content')
 </div>
+
+@section('footer')
+<footer>
+
+</footer>
+@endsection
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 </body>
