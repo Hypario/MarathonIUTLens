@@ -11,8 +11,13 @@ class SerieController extends Controller
     public function show($id) {
 
         $series = Serie::find($id);
+        $episodes = Episode::select("saison", "nom", "numero", "urlImage")
+            ->where("serie_id","=",$id)
+            ->get();
 
-        return view('serie.show',['series' => $series]);
+        $saisons = $episodes->groupBy('saison');
+
+        return view('serie.show', compact("series", "saisons"));
     }
 
     public function episode($num_serie,$numero) {

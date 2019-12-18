@@ -49,4 +49,17 @@
         </div>
     @endif
 
+    <div id = "episodes">
+        @foreach($saisons as $saison => $episodes )
+            <p>Saison n°{{ $saison }}</p>
+            @foreach($episodes as $episode)
+                <div>
+                    <img src={{ $episode->urlImage }} />
+                    Episode n°{{$episode->numero}} {{$episode->nom}}
+                </div>
+            @endforeach
+        @endforeach
+
+    </div>
+
 @endsection
