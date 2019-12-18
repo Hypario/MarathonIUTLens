@@ -64,7 +64,7 @@
             <p>Saison n°{{ $saison }}</p>
             @foreach($episodes as $episode)
                 <div>
-                    <img src={{ $episode->urlImage }} />
+                    <a href="/serie/{{$series->id}}/{{$episode->numero}}"><img src={{ $episode->urlImage }} /></a>
                     Episode n°{{$episode->numero}} {{$episode->nom}}
                 </div>
             @endforeach

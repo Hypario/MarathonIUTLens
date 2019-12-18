@@ -16,9 +16,7 @@
                     <br>{{$serie->note}}
                     <br>{{$serie->statut}}
                     <br>{{$serie->premiere}}
-                    <br>{{$serie->urlimage}}
-                    <br>{{$serie->avis}}
-                    <br>{{$serie->urlAvis}}</li>
+                    <br><a href={{route('serie.show',$serie->id)}}><img src={{ $serie->urlImage }} /></a></li>
             @endforeach
         </ul>
     @else
