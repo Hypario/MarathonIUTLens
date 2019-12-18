@@ -8,7 +8,7 @@
     </div>
     <div>
 
-        <p><strong>Resume : </strong>{!! html_entity_decode($serie->resume)!!}</p>
+        <p><strong>Resume : </strong>{!! html_entity_decode($series->resume)!!}</p>
     </div>
     <div>
 
@@ -27,17 +27,26 @@
     </div>
 
     <div>
-        <p>Image : <img src={{ $series->urlImage }} /></p>
+        <p><img src={{ $series->urlImage }} /></p>
     </div>
 
+    @if($series->avis = null)
+        <div>
+            <p><strong>Avis de la rédaction: </strong>{{$series->avis}}</p>
+        </div>
+    @else
+        <div>
+            <p><strong>Avis de la rédaction : </strong> d'avis de la rédaction disponible</p>
+        </div>
+    @endif
+    @if($series->urlAvis != null)
     <div>
-        <p><strong>Avis : </strong>{{$series->avis}}</p>
+        <p><strong>Vidéo critique : </strong>{{$series->urlAvis}}</p>
     </div>
-
-    <div>
-
-        <p><strong>UrlAvis : </strong>{{$series->urlAvis}}</p>
-    </div>
-
+    @else
+        <div>
+            <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible</p>
+        </div>
+    @endif
 
 @endsection
