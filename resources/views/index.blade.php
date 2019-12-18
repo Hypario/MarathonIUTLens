@@ -11,7 +11,7 @@
 
             @foreach($series as $serie)
                 <li>{{$serie->nom}}
-                    <br>{{$serie->resume}}
+                    <br>{!! html_entity_decode($serie->resume)!!}
                     <br>{{$serie->langue}}
                     <br>{{$serie->note}}
                     <br>{{$serie->statut}}
