@@ -29,22 +29,24 @@
 <!-- Authentication Links -->
 <nav class="container">
     <ul class="menu">    
-        <li>
-            <form action="#" method="get">
-                <select name='genre'>
-                    @foreach($genres as $genre)
-                    <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
-                    @endforeach
-                
-                </select>
-            </form>
-        </li>
-        <li>
-            <input type="text" name="saisie" value="Recherche">
-            <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
-            
+        @if (isset($genres))
+            <li>
+                <form action="#" method="get">
+                    <select name='genre'>
+                        @foreach($genres as $genre)
+                        <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
+                        @endforeach
 
-        </li>
+                    </select>
+                </form>
+            </li>
+            <li class="recherche">
+                <input type="text" name="saisie" value="Recherche">
+                <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
+
+
+            </li>
+        @endif
         @guest
             <li><a href="{{ route('register') }}">S'inscrire</a></li>
             <li><a href="{{ route('login') }}">Se connecter</a></li>
