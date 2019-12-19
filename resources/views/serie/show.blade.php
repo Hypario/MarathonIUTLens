@@ -69,6 +69,10 @@
             </div>
         @endif
 
+        @if(Auth::check() && Auth::user()->administrateur === 1)
+            <a href="{{ route("admin.avis",$series->id) }}">Changer l'avis administrateur</a>
+        @endif
+
         <div id="episodes">
             @foreach($saisons as $saison => $episodes )
                 <p>Saison n°{{ $saison }}</p>
