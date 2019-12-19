@@ -113,6 +113,7 @@ class SerieController extends Controller
 
         } else {
             $user["authentificated"] = false;
+            $isSerieSeen = null;
         }
 
         $series = Serie::find($id);
