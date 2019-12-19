@@ -9,3 +9,55 @@
     background: #1D9396;
 
 }
+
+body{
+    font-family: helvetica;
+}
+
+a{
+    text-decoration: none;
+    color : gray;
+}
+
+#identifiant{
+    color: white;
+    display: inline;
+}
+
+li{
+    list-style:none;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.titre{
+    font-weight: bold;
+    position: absolute;
+    top: 200px;
+    font-size: 35px;
+}
+
+img {
+    border-radius: 10%;
+}
+
+.infoSerie{
+    margin-left: 15%;
+    padding-top: 425px;
+}
+
+.vignetteSerie{
+    position: absolute;
+    top: 325px;
+    position:absolute;
+
+}
+
+.contentSerie{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: -5%;
+}

@@ -10,7 +10,7 @@
         <ul>
 
             @foreach($series as $serie)
-                <li>{{$serie->nom}}
+                <li><h1>{{$serie->nom}}</h1>
                     <br>{!! html_entity_decode($serie->resume)!!}
                     <br>{{$serie->langue}}
                     <br>{{$serie->note}}

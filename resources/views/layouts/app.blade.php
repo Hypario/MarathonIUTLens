@@ -18,7 +18,7 @@
 
 <!-- Authentication Links -->
 <nav>
-    <ul>
+    <ul id="identifiant">
         @guest
             <li><a href="{{ route('login') }}">Connexion</a></li>
             <li><a href="{{ route('register') }}">Inscription</a></li>
