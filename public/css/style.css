@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    color: #fff;
+    color: #115557;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -82,7 +82,11 @@ header {
 
 
 /* MAIN */
-.categorie {
+.categories div {
+    margin-bottom: 5rem;
+}
+
+.titre {
     color: #115557;
     font-size: 3rem;
     text-transform: uppercase;
@@ -92,7 +96,7 @@ hr {
     width: 15rem;
     background-color: #115557;
     padding: 0.1rem;
-    margin: 1rem 0 7rem 0;
+    margin: 1rem 0 6rem 0;
 }
 
 #main {
@@ -183,6 +187,56 @@ hr {
     font-weight: bold;
     font-size: 10px;
 
+}
+
+#previousEp{
+    position: absolute;
+    top: 700px;
+
+}
+
+#nextEP{
+    position: absolute;
+    top: 700px;
+    left: 1190px;
+}
+
+#nextEP,#previousEp{
+    margin: 3.6rem 0;
+    background-color:#F6DF19;
+    border: #F6DF19 solid 1rem;
+    border-radius: 2.5rem;
+    color: #1D9396;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+#infoEpisode{
+    font-size: 20px;
+    margin-right: 675px;
+    position: absolute;
+    top: 400px;
+    left: 1300px;
+}
+
+#imageEpisode{
+    width: 600px;
+    height: 336px;
+    border-radius: 2.5rem;
+    color: white;
+    background-color: #1D9396;
+
+    text-align: center;
+}
+
+.textImage{
+    font-size: 30px;
+    padding-top: 138px;
+
+}
+#retourSerie{
+    font-size: 15px;
+    color: #115557;
 }
 
 /**

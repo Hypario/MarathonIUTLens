@@ -51,7 +51,7 @@
             <li><a href="{{ route('register') }}">S'inscrire</a></li>
             <li><a href="{{ route('login') }}">Se connecter</a></li>
         @else
-            <li> Bonjour <a href ="{{ route('user.home') }}">{{ Auth::user()->name }}</a></li>
+            <li style="color:#115557;"> Bonjour <a href ="{{ route('user.home') }}">{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -65,10 +65,9 @@
 </nav>
 
 <div id="main">
-    <div class="container">
+    <div class="container categories">
         @yield('content')
     </div>
-
 </div>
 
 @section('footer')
