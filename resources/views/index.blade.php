@@ -2,21 +2,25 @@
 @section('title','Accueil')
 @section('content')
 
-    Accueil
-    <br />
-    <h2>La liste des series</h2>
+    <h2 class="categorie">La liste des series</h2>
+    <hr>
 
     @if(!empty($series))
         <ul>
-
             @foreach($series as $serie)
-                <li><h1>{{$serie->nom}}</h1>
-                    <br>{!! html_entity_decode($serie->resume)!!}
-                    <br>{{$serie->langue}}
-                    <br>{{$serie->note}}
-                    <br>{{$serie->statut}}
-                    <br>{{$serie->premiere}}
-                    <br><a href={{route('serie.show',$serie->id)}}><img src={{ url($serie->urlImage) }} /></a></li>
+            <li>
+                <div class="serie">
+                    <a class="serie-hover" href="{{ route('serie.show', $serie->id) }}">
+                        <h2 class="title">{{ $serie->nom }} <br> {{ date('Y', strtotime($serie->premiere)) }} <br> {{ isset($serie->note) ? $serie->note : '- ' }}/10 </h2>
+
+                        <span class="resume">
+                            {!! html_entity_decode($serie->resume)!!}
+                        </span>
+                    </a>
+                    <img src="{{ $serie->urlImage }}" class="affiche">
+                </div>
+
+            </li>
             @endforeach
         </ul>
     @else
