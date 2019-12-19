@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Episode;
+use App\Genre;
 use App\Serie;
 use Illuminate\Http\Request;
 use App\User;
@@ -97,6 +98,15 @@ class SerieController extends Controller
         }
         return redirect('404');
         // redirect to a 404
+    }
+
+    public function genre($idGenre) {
+        if ($genre = Genre::find($idGenre)) {
+            $series = Serie::with('genres')->where('genre_id', "=", $idGenre);
+
+            return view("genre", compact("genre", "series"));
+        }
+        return redirect('404');
     }
 
     private function SeenSerie($id): bool

@@ -14,7 +14,7 @@
 <body>
 <header>
     <div class="container">
-<!--
+    <!--
         <a href="{{ url('/') }}">
             {{ config('app.name', 'Seeries') }}
         </a>
@@ -28,30 +28,27 @@
 </header>
 <!-- Authentication Links -->
 <nav class="container">
-    <ul class="menu">    
+    <ul class="menu">
         @if (isset($genres))
             <li>
-                <form action="#" method="get">
+                <form action="{{ route('serie.sort') }}" method="get">
                     <select name='genre'>
                         @foreach($genres as $genre)
-                        <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
+                            <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
                         @endforeach
-
                     </select>
                 </form>
             </li>
             <li class="recherche">
                 <input type="text" name="saisie" placeholder="Recherche">
                 <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
-
-
             </li>
         @endif
         @guest
             <li><a href="{{ route('register') }}">S'inscrire</a></li>
             <li><a href="{{ route('login') }}">Se connecter</a></li>
         @else
-            <li> Bonjour <a href ="{{ route('user.home') }}">{{ Auth::user()->name }}</a></li>
+            <li> Bonjour <a href="{{ route('user.home') }}">{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -72,9 +69,9 @@
 </div>
 
 @section('footer')
-<footer>
+    <footer>
 
-</footer>
+    </footer>
 @endsection
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.js') }}"></script>
