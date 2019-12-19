@@ -36,15 +36,13 @@
                         @foreach($genres as $genre)
                         <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
                         @endforeach
-
                     </select>
+                    <input type="submit" value="Ok">
                 </form>
             </li>
             <li class="recherche">
                 <input type="text" name="saisie" placeholder="Recherche">
                 <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
-
-
             </li>
         @endif
         @guest
