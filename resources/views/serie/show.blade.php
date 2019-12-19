@@ -57,7 +57,7 @@
                     <p>
                         <video controls width="250">
 
-                            <source src={{$series->urlAvis}}
+                            <source src={{url($series->urlAvis)}}
                                 type="video/mp4">
                             Désolé, votre navigateur ne supporte pas les vidéos :(.
                         </video>
@@ -74,6 +74,33 @@
             @endif
         </div>
 
+        @if(!is_null($series->avis))
+            <div class="avisSerie">
+                <p><strong>Avis de la rédaction: </strong>{{$series->avis}}</p>
+            </div>
+        @else
+            <div class="avisSerie">
+                <p><strong>Avis de la rédaction : </strong> Pas encore d'avis de la rédaction disponible :(</p>
+            </div>
+        @endif
+        @if(!is_null($series->urlAvis))
+            <div class="avisVideoSerie">
+                <p><strong>Vidéo critique : </strong></p>
+
+                <p>
+                    <video controls width="250">
+
+                        <source src={{url($series->urlAvis)}}
+                            type="video/mp4">
+                        Désolé, votre navigateur ne supporte pas les vidéos :(.
+                    </video>
+                </p>
+            </div>
+        @else
+            <div class="avisVideoSerie">
+                <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible :(</p>
+            </div>
+        @endif
 
 
         <div>
