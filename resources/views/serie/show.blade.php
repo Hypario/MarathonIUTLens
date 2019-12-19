@@ -4,7 +4,6 @@
 @section('content')
     <div class="contentSerie">
         <div>
-
             <p class="titre">{{ $series->nom }}</p>
         </div>
         <div class="infoSerie">
@@ -62,8 +61,10 @@
                 <p>Saison n°{{ $saison }}</p>
                 @foreach($episodes as $episode)
                     <div>
-                        <a href="/serie/{{$series->id}}/{{$episode->numero}}"><img src={{ url($episode->urlImage) }} /></a>
-                        Episode n°{{$episode->numero}} {{$episode->nom}}
+                        <a href="{{ route('episode.show', [$series->id, $episode->numero]) }}">
+                            <img src="{{ public_path($episode->urlImage) }}" />
+                        </a>
+                        Episode n°{{ $episode->numero }} {{ $episode->nom }}
                     </div>
                 @endforeach
             @endforeach
@@ -95,7 +96,7 @@
 
         @if (!$comments->isEmpty())
             @foreach($comments as $comment)
-                @if ($comment->validated === 1 || Auth::user()->administrateur === 1)
+                @if ($comment->validated === 1 || (Auth::check() && Auth::user()->administrateur === 1))
                     <h2>{{ $comment->utilisateur->name }}</h2>
                     <h2>{{ $comment->note }} / 10</h2>
                     @if (Auth::check() && Auth::user()->administrateur === 1 && $comment->validated === 0)

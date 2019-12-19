@@ -20,6 +20,7 @@ class SerieController extends Controller
 
         $comments = $series->comments()->get();
 
+
         return view('serie.show', compact("series", "saisons", "comments"));
     }
 
