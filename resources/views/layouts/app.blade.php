@@ -9,15 +9,25 @@
     <title>Seeries - @yield('title')</title>
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"> 
 </head>
 <body>
 <header>
-    <a href="{{ url('/') }}">
-        {{ config('app.name', 'Laravel') }}
-    </a>
+    <div class="container">
+<!--
+        <a href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+-->
+        <a href="{{ url('/') }}">
+            <img src="{{ url('img/logo_blanc.png') }}" id="logo" alt="logo">
+        </a>
+        
+    </div>
+    
 </header>
 <!-- Authentication Links -->
-<nav>
+    <nav>
     <ul>
         @guest
             <li><a href="{{ route('login') }}">Login</a></li>
@@ -35,8 +45,12 @@
         @endguest
     </ul>
 </nav>
+
 <div id="main">
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
+   
 </div>
 
 @section('footer')
