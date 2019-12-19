@@ -13,31 +13,28 @@ class SerieController extends Controller
 {
     public function getAvisSerie($id, $user) {
         // on récupére tous les épisodes de la-dite série
-        $eps = Episode::all()->where("serie_id","=",$id);
+        $eps = Episode::all()
+            ->where("serie_id","=",$id);
 
         // on récupére les infos sur l'utilisateur
 
-        $vu = DB::table("seen")->select("episode_id")->where("user_id","=",$user->id)->get();
+        $vu = DB::table("seen")
+            ->select("episode_id")
+            ->where("user_id","=",$user->id)
+            ->get();
 
         $dt = [];
 
         foreach ($vu as $v) {
-            array_push($dt,$v->episode_id);
+            $dt[] = $v->episode_id;
         }
 
-
-
         foreach ($eps as $episode) {
-
-
-
             if (!in_array($episode->id,$dt)) {
                 return false;
             }
-
-
-    return true;
-    }
+        }
+        return true;
     }
 
     public function show($id) {

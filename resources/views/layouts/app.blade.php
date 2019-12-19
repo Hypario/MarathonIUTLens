@@ -9,16 +9,26 @@
     <title>Seeries - @yield('title')</title>
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="header">
-    <a href="{{ url('/') }}">
-        {{ config('app.name', 'Seeries') }}
-    </a>
+<header>
+    <div class="container">
+<!--
+        <a href="{{ url('/') }}">
+            {{ config('app.name', 'Seeries') }}
+        </a>
+-->
+        <a href="{{ url('/') }}">
+            <img src="{{ url('img/logo_blanc.png') }}" id="logo" alt="logo">
+        </a>
 
+    </div>
+
+</header>
 <!-- Authentication Links -->
 <nav>
-    <ul id="identifiant">
+    <ul>
         @guest
             <li><a href="{{ route('login') }}">Connexion</a></li>
             <li><a href="{{ route('register') }}">Inscription</a></li>
@@ -35,9 +45,12 @@
         @endguest
     </ul>
 </nav>
-</header>
+
 <div id="main">
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
+
 </div>
 
 @section('footer')
