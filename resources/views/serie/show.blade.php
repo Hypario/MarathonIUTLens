@@ -4,7 +4,8 @@
 @section('content')
     <div class="contentSerie">
         <div>
-            <p class="titre">{{ $series->nom }}</p>
+            <h2 class="titre">{{ $series->nom }}</h2>
+            <hr>
         </div>
         <div class="infoSerie">
             <div>

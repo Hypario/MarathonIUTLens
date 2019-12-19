@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    color: #fff;
+    color: #115557;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -82,7 +82,11 @@ header {
 
 
 /* MAIN */
-.categorie {
+.categories div {
+    margin-bottom: 5rem;
+}
+
+.titre {
     color: #115557;
     font-size: 3rem;
     text-transform: uppercase;
@@ -92,7 +96,7 @@ hr {
     width: 15rem;
     background-color: #115557;
     padding: 0.1rem;
-    margin: 1rem 0 7rem 0;
+    margin: 1rem 0 6rem 0;
 }
 
 #main {

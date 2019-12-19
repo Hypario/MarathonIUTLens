@@ -65,10 +65,9 @@
 </nav>
 
 <div id="main">
-    <div class="container">
+    <div class="container categories">
         @yield('content')
     </div>
-
 </div>
 
 @section('footer')
