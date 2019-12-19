@@ -5,39 +5,23 @@ namespace App\Http\Controllers;
 
 use App\Episode;
 use App\Serie;
-use http\Client\Curl\User;
+use App\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class SerieController extends Controller
 {
 
     public function see($id)
     {
-        if ($myUser = Auth::user()) {
+        if (Auth::check()) {
+            $series = Serie::all();
 
-            $episodes = Episode::all()->where("serie_id", "=", $id);
-
-            $epliked = DB::table("seen")->select("*")->where("user_id", "=", $myUser->id)->get();
-
-            $dt = [];
-            foreach ($epliked as $ep) {
-                array_push($dt, $ep->episode_id);
+            if ($series->find($id) && !$this->SeenSerie($id)) {
+                $episodes = Serie::find($id)->episodes()->get();
+                Auth::user()->seen()->syncWithoutDetaching($episodes);
             }
-
-
-            foreach ($episodes as $episode) {
-                if (!in_array($episode->id, $dt)) {
-                    DB::table("seen")->insert(["user_id" => $myUser->id, "episode_id" => $episode->id]);
-                }
-            }
-
             return redirect()->back();
-
-        } else {
-            echo "Cette action n'est pas censée arriver";
-
         }
         return redirect('404');
     }
@@ -45,7 +29,7 @@ class SerieController extends Controller
     public function show($id)
     {
         if ($myuser = Auth::check()) {
-            $isSerieSeen = $this->SeeSerie($id);
+            $isSerieSeen = $this->SeenSerie($id);
         } else {
             $isSerieSeen = null;
         }
@@ -113,7 +97,7 @@ class SerieController extends Controller
         // redirect to a 404
     }
 
-    private function SeeSerie($id): bool
+    private function SeenSerie($id): bool
     {
         $seen = Auth::user()->seen()->get();
         $serie = Serie::find($id);
