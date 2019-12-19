@@ -98,7 +98,7 @@
                 @if ($comment->validated === 1 || Auth::user()->administrateur === 1)
                     <h2>{{ $comment->utilisateur->name }}</h2>
                     <h2>{{ $comment->note }} / 10</h2>
-                    @if (Auth::user()->administrateur === 1 && $comment->validated === 0)
+                    @if (Auth::check() && Auth::user()->administrateur === 1 && $comment->validated === 0)
                         <form action="{{ route('comment.valid', $comment->id) }}" method="post">
                             {{ csrf_field() }}
                             <button type="submit">Valider</button>
