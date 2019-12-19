@@ -3,7 +3,7 @@
 
 @section('content')
     <di>
-        <a href="{{ route('serie.show',[$serie->id]) }}">retour à la série.</a>
+        <a href="{{ route('serie.show', [$serie->id]) }}">retour à la série.</a>
     </di>
     <div>
         <p>{{$serie->nom}}, saison {{$episode->saison}}</p>
@@ -16,6 +16,18 @@
             @endif
         </p>
     </div>
+    @if(Auth::check())
+        <div>
+            <p>
+                <b>Appréciation de la série : </b>
+                @if($isEpisodeSeen)
+                    Vous avez déjà vu l'épisode
+                @else
+                    <a href="{{ route('episode.see',$episode->id) }}">Voir l'épisode</a>
+                @endif
+            </p>
+        </div>
+    @endif
     <div>
 
         <p><strong>Résumé : </strong>{!! html_entity_decode($episode->resume)!!}</p>

@@ -26,14 +26,14 @@
         </div>
 
         <p><img src={{ url($series->urlImage) }} class="vignetteSerie"/></p>
-        @if($user["authentificated"])
+        @if(Auth::check())
             <div>
                 <p>
-                    <b>Appréciation de la série : </b>
-                    @if($isSerieLiked)
-                        Vous aimez déjà la série
+                    <b>Etat de la série : </b>
+                    @if($isSerieSeen)
+                        Vous avez déjà vu la série
                     @else
-                        <button>Aimer la série</button>
+                        <a href="{{ route('serie.see',$series->id) }}">Voir la série</a>
                     @endif
                 </p>
             </div>
@@ -67,6 +67,10 @@
             <div class="avisVideoSerie">
                 <p><strong>Vidéo critique : </strong>Pas de vidéo critique de la rédaction disponible :(</p>
             </div>
+        @endif
+
+        @if(Auth::check() && Auth::user()->administrateur === 1)
+            <a href="{{ route("admin.avis",$series->id) }}">Changer l'avis administrateur</a>
         @endif
 
         <div id="episodes">

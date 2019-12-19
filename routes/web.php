@@ -20,6 +20,7 @@ Auth::routes();
 
 // landing page and sorting
 Route::get('/', 'MainController@index')->name('home');
+Route::get('/genre/{genre}', 'MainController@genre')->name('home.genre');
 
 // show series
 Route::get('/serie', 'SerieController@index')->name('serie.index');
@@ -33,3 +34,9 @@ Route::post('/comment/{comment}/valid', "CommentController@valid")->name("commen
 Route::post('/comment/{comment}/reject', "CommentController@reject")->name("comment.reject");
 
 Route::get("/userpage","MainController@user")->name('user.home');
+
+Route::get('/seeSerie/{id}', "SerieController@see")->name("serie.see");
+
+Route::get('/seeEpisode/{id}', "EpisodeController@see")->name("episode.see");
+Route::get('/modifAvis/{id}',"SerieController@modif_avis")->name("admin.avis");
+Route::post('/modifAvis/{id}/send',"SerieController@send_avis")->name("admin.sndavis");
