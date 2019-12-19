@@ -26,7 +26,7 @@
         </div>
 
         <p><img src={{ url($series->urlImage) }} class="vignetteSerie"/></p>
-        @if($user["authentificated"])
+        @if(Auth::check())
             <div>
                 <p>
                     <b>Etat de l'épisode : </b>

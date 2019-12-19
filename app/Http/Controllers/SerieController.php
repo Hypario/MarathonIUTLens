@@ -12,62 +12,6 @@ use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class SerieController extends Controller
 {
-    public function SeeSerie($id, $user)
-    {
-        // on récupére tous les épisodes de la-dite série
-        $eps = Episode::all()
-            ->where("serie_id", "=", $id);
-
-        // on récupére les infos sur l'utilisateur
-
-        $vu = DB::table("seen")
-            ->select("episode_id")
-            ->where("user_id", "=", $user->id)
-            ->get();
-
-        $dt = [];
-
-        foreach ($vu as $v) {
-            $dt[] = $v->episode_id;
-        }
-
-        foreach ($eps as $episode) {
-            if (!in_array($episode->id, $dt)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public function SeenEpisode($idEpisode, $user)
-    {
-        //   dd(Episode::all()->where("numero","=",$idE)->where("serie_id","=",$idS)->where("saison","=",$saison));
-        $epi = Episode::all()->where("id", "=", $idEpisode);
-
-        $ep = $epi;
-
-        foreach ($ep as $episode) {
-            $epi = $ep;
-        }
-
-        $myUser = $user;
-
-        $epliked = DB::table("seen")->select("*")->where("user_id", "=", $myUser->id)->get();
-
-        $dt = [];
-        foreach ($epliked as $ep) {
-
-            array_push($dt, $ep->episode_id);
-        }
-
-        foreach ($epi as $ep) {
-            if (!in_array($ep->id, $dt)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     public function see($id)
     {
@@ -100,15 +44,9 @@ class SerieController extends Controller
 
     public function show($id)
     {
-        $user = [];
-        if ($myuser = Auth::user()) {
-            $user["authentificated"] = true;
-            $user["userdata"] = $myuser;
-            $isSerieSeen = $this->SeeSerie($id, $myuser);
-
-
+        if ($myuser = Auth::check()) {
+            $isSerieSeen = $this->SeeSerie($id);
         } else {
-            $user["authentificated"] = false;
             $isSerieSeen = null;
         }
 
@@ -122,7 +60,7 @@ class SerieController extends Controller
 
         $comments = $series->comments()->get();
 
-        return view('serie.show', compact("series", "saisons", "comments", "user", "isSerieSeen"));
+        return view('serie.show', compact("series", "saisons", "comments", "isSerieSeen"));
     }
 
     public function saison($num_serie, $num_saison)
@@ -163,11 +101,9 @@ class SerieController extends Controller
                     $next = $numero + 1;
                 $user = [];
                 if ($myuser = Auth::user()) {
-                    $user["authentificated"] = true;
-                    // $isEpisodeSeen = SeenEpisode(Episode::get($numero)->id,$myuser);
-                    $isEpisodeSeen = $this->SeenEpisode($episode->id, $myuser);
+                    $isEpisodeSeen = $this->SeenEpisode($episode->id);
                 } else {
-                    $user["authentificated"] = false;
+                    $isEpisodeSeen = null;
                 }
 
                 return view('episode.show', compact("serie", "episode", "previous", "next", "user", "isEpisodeSeen"));
@@ -175,5 +111,26 @@ class SerieController extends Controller
         }
         return redirect('404');
         // redirect to a 404
+    }
+
+    private function SeeSerie($id): bool
+    {
+        $seen = Auth::user()->seen()->get();
+        $serie = Serie::find($id);
+        foreach ($serie->episodes as $episode) {
+            if (!$seen->find($episode)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private function SeenEpisode($idEpisode): bool
+    {
+        $episodes = Auth::user()->seen()->get();
+
+        if ($episodes->find($idEpisode))
+            return true;
+        return false;
     }
 }
