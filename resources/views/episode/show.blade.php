@@ -16,6 +16,18 @@
             @endif
         </p>
     </div>
+    @if($user["authentificated"])
+        <div>
+            <p>
+                <b>Appréciation de la série : </b>
+                @if($isEpisodeSeen)
+                    Vous avez déjà vu l'épisode
+                @else
+                    <a href="{{ route('episode.see',$episode->id) }}">Voir l'épisode</a>
+                @endif
+            </p>
+        </div>
+    @endif
     <div>
 
         <p><strong>Résumé : </strong>{!! html_entity_decode($episode->resume)!!}</p>

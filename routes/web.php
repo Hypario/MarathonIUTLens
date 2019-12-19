@@ -34,3 +34,7 @@ Route::post('/comment/{comment}/valid', "CommentController@valid")->name("commen
 Route::post('/comment/{comment}/reject', "CommentController@reject")->name("comment.reject");
 
 Route::get("/userpage","MainController@user")->name('user.home');
+
+Route::get('/seeSerie/{id}', "SerieController@see")->name("serie.see");
+
+Route::get('/seeEpisode/{id}', "EpisodeController@see")->name("episode.see");
