@@ -108,6 +108,12 @@ hr {
     padding: 0 2rem;
 }
 
+#inscr{
+    border: #1D9396 solid 1rem;
+    background-color: #1D9396;
+    border-radius: 2.5rem;
+}
+
 /**
 .contentSerie{
     margin-left: 15%;
