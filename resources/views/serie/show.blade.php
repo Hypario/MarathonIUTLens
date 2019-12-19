@@ -73,28 +73,9 @@
                 <a href="{{ route("admin.avis",$series->id) }}">Changer l'avis administrateur</a>
             @endif
         </div>
-
-
-
-        <div>
-            @foreach($saisons as $saison => $episodes)
-                <p>Saison n°{{ $saison }}</p>
-                <div class="episodes">
-                    @foreach($episodes as $episode)
-                    <div>
-                        <a href="{{ route('episode.show', [$series->id, $episode->numero]) }}">
-                            @if ($episode->urlImage)
-                                <img src="{{ url($episode->urlImage) }}"/>
-                            @endif
-                            Episode n°{{ $episode->numero }} {{ $episode->nom }}
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
-
-        <h1>Les commentaires :</h1>
+        
+        <h2 class="titre">Commentaires</h2>
+        <hr class="hr-horizontal">
 
         @if (\Illuminate\Support\Facades\Auth::check())
             <form action="{{ route('comment.post', $series->id) }}" method="post">
@@ -121,29 +102,55 @@
         @if (!$comments->isEmpty())
             @foreach($comments as $comment)
                 @if ($comment->validated === 1)
-                    <h2>{{ $comment->utilisateur->name }}</h2>
-                    <h2>{{ $comment->note }} / 10</h2>
-                    <p>{{ $comment->content }}</p>
+                    <div class="commentaire">
+                        <h2>{{ $comment->utilisateur->name }} {{ $comment->note }} / 10</h2>
+                        <p>{{ $comment->content }}</p>
+                    </div>
+                    
                 @elseif (Auth::check() && Auth::user()->administrateur === 1)
-                    <h2>{{ $comment->utilisateur->name }}</h2>
-                    <h2>{{ $comment->note }} / 10</h2>
+                    <div>
+                        <h2>{{ $comment->utilisateur->name }} {{ $comment->note }} / 10</h2>
 
-                    <form action="{{ route('comment.valid', $comment->id) }}" method="post">
-                        {{ csrf_field() }}
-                        <button type="submit">Valider</button>
-                    </form>
+                        <form action="{{ route('comment.valid', $comment->id) }}" method="post">
+                            {{ csrf_field() }}
+                            <button type="submit">Valider</button>
+                        </form>
 
-                    <form action="{{ route('comment.reject', $comment->id) }}" method="post">
-                        {{ csrf_field() }}
-                        <button type="submit">refuser</button>
-                    </form>
+                        <form action="{{ route('comment.reject', $comment->id) }}" method="post">
+                            {{ csrf_field() }}
+                            <button type="submit">refuser</button>
+                        </form>
 
-                    <p>{{ $comment->content }}</p>
+                        <p>{{ $comment->content }}</p>
+                    </div>
+                        
                 @endif
             @endforeach
         @else
             <h1>Aucun commentaire pour cette série</h1>
         @endif
+
+
+        <div>
+            @foreach($saisons as $saison => $episodes)
+                <h2 class="titre">Saison n°{{ $saison }}</h2>
+                <hr class="hr-horizontal">
+                <div class="episodes">
+                    @foreach($episodes as $episode)
+                    <div>
+                        <a href="{{ route('episode.show', [$series->id, $episode->numero]) }}">
+                            @if ($episode->urlImage)
+                                <img src="{{ url($episode->urlImage) }}"/ class="miniature">
+                            @endif
+                            Episode n°{{ $episode->numero }} {{ $episode->nom }}
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+
+        
     </div>
 
 
