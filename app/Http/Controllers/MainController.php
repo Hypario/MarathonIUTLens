@@ -18,14 +18,16 @@ class MainController extends Controller
      */
     public function index()
     {
-        $series = Serie::all();
+        $mostViewed = $this->popular();
+        $mostReviewed = $this->reviews();
 
         $genres = Genre::all();
 
-        return view("index", compact("series", "genres"));
+        return view("index", compact("genres", "mostViewed", "mostReviewed"));
     }
 
-    public function genre($idGenre) {
+    public function genre($idGenre)
+    {
         if (Genre::find($idGenre)) {
             $genres = Genre::all();
             $series = Serie::with('genres')->where('genre_id', '=', $idGenre);
@@ -46,19 +48,17 @@ class MainController extends Controller
 
     /**
      * Popular series showed in the landing page
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     private function popular()
     {
-        $series = DB::table("series")
-            ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume"))
+        return DB::table("series")
+            ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume, series.note, series.premiere, series.urlImage"))
             ->join("episodes", "series.id", "=", "episodes.serie_id")
             ->join("seen", "episodes.id", "=", "seen.episode_id")
-            ->groupBy("series.id", "series.nom", "series.resume")
+            ->limit(4)
+            ->groupBy("series.id", "series.nom", "series.resume", 'series.note', 'series.premiere', 'series.urlImage')
             ->orderBy("vues_count", "desc")
             ->get();
-
-        return view("index", compact("series"));
     }
 
     /**
@@ -67,10 +67,10 @@ class MainController extends Controller
      */
     private function reviews()
     {
-
-        $retour = Serie::withCount('comments')->orderBy('comments_count', 'desc')->get();
-
-        return view("reviews", compact("retour"));
+        return Serie::withCount('comments')
+            ->orderBy('comments_count', 'desc')
+            ->limit(4)
+            ->get();
     }
 
     public function user()
