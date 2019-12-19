@@ -109,8 +109,8 @@ hr {
 #main ul li {
     display: flex;
     justify-content: center;
-}   
-    
+}
+
 .serie {
     position: relative;
     display: flex;
@@ -159,7 +159,7 @@ hr {
 }
 
 
-#email,#password,#password-confirm{
+#name, #email,#password,#password-confirm{
     margin-top: 3.6rem;
     padding-top: 2px;
     font-weight: bold;
@@ -197,14 +197,14 @@ hr {
     #main ul {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .serie-hover {
         opacity: 1;
         position: inherit;
         background-color: #fff;
         color: #115557;
         border-radius: 0;
-        
+
     }
 }
 
@@ -212,5 +212,5 @@ hr {
     #main ul {
         grid-template-columns: 1fr;
     }
-    
+
 }
