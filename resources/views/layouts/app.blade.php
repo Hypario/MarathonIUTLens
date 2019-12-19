@@ -14,7 +14,7 @@
 <body>
 <header>
     <div class="container">
-<!--
+    <!--
         <a href="{{ url('/') }}">
             {{ config('app.name', 'Seeries') }}
         </a>
@@ -28,13 +28,13 @@
 </header>
 <!-- Authentication Links -->
 <nav class="container">
-    <ul class="menu">    
+    <ul class="menu">
         @if (isset($genres))
             <li>
-                <form action="#" method="get">
+                <form action="{{ route('serie.sort') }}" method="get">
                     <select name='genre'>
                         @foreach($genres as $genre)
-                        <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
+                            <option value="{{ $genre->id}}">{{ $genre->nom }}</option>
                         @endforeach
                     </select>
                     <input type="submit" value="Ok">
@@ -66,6 +66,7 @@
     <div class="container categories">
         @yield('content')
     </div>
+
 </div>
 
 @section('footer')
