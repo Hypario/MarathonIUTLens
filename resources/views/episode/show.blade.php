@@ -10,6 +10,9 @@
         <p>Episode n°{{$episode->numero}}; {{$episode->nom}}.</p>
     </div>
     <div>
+        <p><img src={{ url($episode->urlImage) }} /></p>
+    </div>
+    <div>
 
         <p><strong>Résumé : </strong>{!! html_entity_decode($episode->resume)!!}</p>
     </div>
@@ -22,9 +25,7 @@
         <p><strong>Première : </strong>{{$episode->premiere}}</p>
     </div>
 
-    <div>
-        <p><img src={{ $episode->urlImage }} /></p>
-    </div>
+
 
     @if ($previous)
         <a href="{{ route('episode.show', [$serie->id, $previous]) }}">Épisode précédent</a>

@@ -25,6 +25,7 @@ Route::get('/', 'MainController@index')->name('home');
 Route::get('/serie', 'SerieController@index')->name('serie.index');
 Route::get('/serie/{serie}','SerieController@show')->name('serie.show');
 Route::get('/serie/{serie}/{episode}','SerieController@episode')->name('episode.show');
+Route::get('/serie/{serie}/saison/{saison}','SerieController@saison')->name('saison.show');
 
 // comments
 Route::post('/comment/{serie}', "CommentController@create")->name("comment.post");

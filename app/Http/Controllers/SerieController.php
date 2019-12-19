@@ -23,6 +23,15 @@ class SerieController extends Controller
         return view('serie.show', compact("series", "saisons", "comments"));
     }
 
+    public function saison($num_serie,$num_saison){
+        $serie = Serie::find($num_serie);
+        $saison = Episode::select("saison","nom","numero","urlImage")
+            ->where("saison","=",$num_saison)
+            ->where("serie_id","=",$num_serie)
+            ->get();
+        return view('saison.show',compact("serie","num_saison","saison"));
+    }
+
     public function episode($num_serie,$numero) {
 
         // find the serie

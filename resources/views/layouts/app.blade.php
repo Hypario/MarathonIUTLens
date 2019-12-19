@@ -11,23 +11,23 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-<header>
+<header class="header">
     <a href="{{ url('/') }}">
         {{ config('app.name', 'Seeries') }}
     </a>
-</header>
+
 <!-- Authentication Links -->
 <nav>
-    <ul>
+    <ul id="identifiant">
         @guest
-            <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
+            <li><a href="{{ route('login') }}">Connexion</a></li>
+            <li><a href="{{ route('register') }}">Inscription</a></li>
         @else
-            <li> Bonjour {{ Auth::user()->name }}</li>
+            <li> Bonjour <a href = {{ route('user.home') }}>{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                    Logout
+                    Déconnexion
                 </a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
@@ -35,6 +35,7 @@
         @endguest
     </ul>
 </nav>
+</header>
 <div id="main">
     @yield('content')
 </div>

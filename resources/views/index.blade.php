@@ -10,15 +10,13 @@
         <ul>
 
             @foreach($series as $serie)
-                <li>{{$serie->nom}}
+                <li><h1>{{$serie->nom}}</h1>
                     <br>{!! html_entity_decode($serie->resume)!!}
                     <br>{{$serie->langue}}
                     <br>{{$serie->note}}
                     <br>{{$serie->statut}}
                     <br>{{$serie->premiere}}
-                    <br>{{$serie->urlimage}}
-                    <br>{{$serie->avis}}
-                    <br>{{$serie->urlAvis}}</li>
+                    <br><a href={{route('serie.show',$serie->id)}}><img src={{ url($serie->urlImage) }} /></a></li>
             @endforeach
         </ul>
     @else
