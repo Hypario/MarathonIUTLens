@@ -4,7 +4,6 @@
 @section('content')
     <div class="contentSerie">
         <div>
-
             <p class="titre">{{ $series->nom }}</p>
         </div>
         <div class="infoSerie">
@@ -46,7 +45,7 @@
                     <video controls width="250">
 
                         <source src={{$series->urlAvis}}
-                                type="video/mp4">
+                            type="video/mp4">
                         Désolé, votre navigateur ne supporte pas les vidéos :(.
                     </video>
                 </p>
@@ -62,8 +61,12 @@
                 <p>Saison n°{{ $saison }}</p>
                 @foreach($episodes as $episode)
                     <div>
-                        <a href="/serie/{{$series->id}}/{{$episode->numero}}"><img src={{ url($episode->urlImage) }} /></a>
-                        Episode n°{{$episode->numero}} {{$episode->nom}}
+                        <a href="{{ route('episode.show', [$series->id, $episode->numero]) }}">
+                            @if ($episode->urlImage)
+                                <img src="{{ url($episode->urlImage) }}"/>
+                            @endif
+                        Episode n°{{ $episode->numero }} {{ $episode->nom }}
+                        </a>
                     </div>
                 @endforeach
             @endforeach
@@ -95,20 +98,24 @@
 
         @if (!$comments->isEmpty())
             @foreach($comments as $comment)
-                @if ($comment->validated === 1 || Auth::user()->administrateur === 1)
+                @if ($comment->validated === 1)
                     <h2>{{ $comment->utilisateur->name }}</h2>
                     <h2>{{ $comment->note }} / 10</h2>
-                    @if (Auth::check() && Auth::user()->administrateur === 1 && $comment->validated === 0)
-                        <form action="{{ route('comment.valid', $comment->id) }}" method="post">
-                            {{ csrf_field() }}
-                            <button type="submit">Valider</button>
-                        </form>
+                    <p>{{ $comment->content }}</p>
+                @elseif (Auth::check() && Auth::user()->administrateur === 1)
+                    <h2>{{ $comment->utilisateur->name }}</h2>
+                    <h2>{{ $comment->note }} / 10</h2>
 
-                        <form action="{{ route('comment.reject', $comment->id) }}" method="post">
-                            {{ csrf_field() }}
-                            <button type="submit">refuser</button>
-                        </form>
-                    @endif
+                    <form action="{{ route('comment.valid', $comment->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit">Valider</button>
+                    </form>
+
+                    <form action="{{ route('comment.reject', $comment->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit">refuser</button>
+                    </form>
+
                     <p>{{ $comment->content }}</p>
                 @endif
             @endforeach
