@@ -17,7 +17,7 @@
                             {!! html_entity_decode($serie->resume)!!}
                         </span>
                     </a>
-                    <img src="{{ $serie->urlImage }}" class="affiche">
+                    <img src="{{ url($serie->urlImage) }}" class="affiche">
                 </div>
 
             </li>
