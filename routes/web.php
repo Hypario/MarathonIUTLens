@@ -41,4 +41,4 @@ Route::get('/seeEpisode/{id}', "EpisodeController@see")->name("episode.see");
 Route::get('/modifAvis/{id}',"SerieController@modif_avis")->name("admin.avis");
 Route::post('/modifAvis/{id}/send',"SerieController@send_avis")->name("admin.sndavis");
 
-Route::post('/genre', "SerieController@genre")->name('serie.sort');
+Route::get('/sort', "SerieController@genre")->name('serie.sort');

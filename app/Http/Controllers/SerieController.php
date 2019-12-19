@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 
 class SerieController extends Controller
@@ -100,9 +101,10 @@ class SerieController extends Controller
         // redirect to a 404
     }
 
-    public function genre($idGenre) {
-        if ($genre = Genre::find($idGenre)) {
-            $series = Serie::with('genres')->where('genre_id', "=", $idGenre);
+    public function genre()
+    {
+        if (Input::get('genre') && $genre = Genre::find(intval(Input::get('genre')))) {
+            $series = Serie::all();
 
             return view("genre", compact("genre", "series"));
         }
@@ -130,7 +132,8 @@ class SerieController extends Controller
         return false;
     }
 
-    public function modif_avis($id) {
+    public function modif_avis($id)
+    {
         // id c'est l'identifiant de la série
 
         // on importe la série
@@ -138,33 +141,31 @@ class SerieController extends Controller
         if (!is_null($serie)) {
 
 
-
-        if ($user = Auth::user())
-            return view("serie.avis",["serie"=>$serie]);
-
-
+            if ($user = Auth::user())
+                return view("serie.avis", ["serie" => $serie]);
 
 
         }
-            return redirect("404");
+        return redirect("404");
 
     }
 
-    public function send_avis(Request $request, $id) {
+    public function send_avis(Request $request, $id)
+    {
         $this->middleware('auth')->except('upload');
-        $serie= Serie::find($id);
+        $serie = Serie::find($id);
 
         $serie->avis = $request->avis;
         $file = $request->file('file_up');
         $filename = $file->getClientOriginalName();
-        $path = public_path().'/uploads/';
-        $newurl =  $file->move($path, $filename);
+        $path = public_path() . '/uploads/';
+        $newurl = $file->move($path, $filename);
 
-        $serie->urlAvis = str_replace(public_path(),"",$newurl);
+        $serie->urlAvis = str_replace(public_path(), "", $newurl);
 
         $serie->save();
 
-        return redirect(route("serie.show",$id));
+        return redirect(route("serie.show", $id));
 
     }
 }
