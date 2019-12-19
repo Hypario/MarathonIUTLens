@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SerieController extends Controller
 {
@@ -140,14 +141,20 @@ class SerieController extends Controller
     }
 
     public function send_avis(Request $request, $id) {
-
+        $this->middleware('auth')->except('upload');
         $serie= Serie::find($id);
 
         $serie->avis = $request->avis;
+        $file = $request->file('file_up');
+        $filename = $file->getClientOriginalName();
+        $path = public_path().'/uploads/';
+        $newurl =  $file->move($path, $filename);
+
+        $serie->urlAvis = str_replace(public_path(),"",$newurl);
 
         $serie->save();
 
-        return redirect()->back();
+        return redirect(route("serie.show",$id));
 
     }
 }
