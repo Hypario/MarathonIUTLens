@@ -26,6 +26,19 @@
         </div>
 
         <p><img src={{ url($series->urlImage) }} class="vignetteSerie"/></p>
+        @if($user["authentificated"])
+            <div>
+                <p>
+                    <b>Appréciation de la série : </b>
+                    @if($isSerieLiked)
+                        Vous aimez déjà la série
+                    @else
+                        <button>Aimer la série</button>
+                    @endif
+                </p>
+            </div>
+        @endif
+
 
 
         @if($series->avis = null)
