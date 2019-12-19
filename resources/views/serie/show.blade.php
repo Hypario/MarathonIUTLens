@@ -3,23 +3,22 @@
 
 @section('content')
     <div>
-
         <p><strong>Nom : </strong>{{ $series->nom }}</p>
     </div>
-    <div>
 
+    <div>
         <p><strong>Résumé : </strong>{!! html_entity_decode($series->resume)!!}</p>
     </div>
-    <div>
 
+    <div>
         <p><strong>Langue : </strong>{{$series->langue}}</p>
     </div>
-    <div>
 
+    <div>
         <p><strong>Note : </strong>{{$series->note}}</p>
     </div>
-    <div>
 
+    <div>
         <p><strong>Statut : </strong>{{$series->statut}}</p>
     </div>
 
@@ -93,7 +92,7 @@
             </select>
             <button type="submit">Envoyer</button>
         </form>
-    @endif
+    @endif*
 
     @if (!$comments->isEmpty())
         @foreach($comments as $comment)
