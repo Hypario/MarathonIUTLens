@@ -126,6 +126,10 @@ hr {
 }
 
 #inscr{
+    margin-left: 250px;
+    padding-top: 1.8rem;
+    width: 660px;
+    margin-top: 2.0rem;
     font-size: 19px;
     font-weight: bold;
     border: #115557 solid 1rem;
@@ -133,23 +137,31 @@ hr {
     border-radius: 2.5rem;
 }
 
-#name,#email{
-    font-weight: bold;
-    width: 640px;
-    border: #1D9396 solid 1rem;
-    background-color: #1D9396;
-    border-radius: 2.5rem;
-    color:white;
-}
 
-
-#password,#password-confirm{
+#email,#password,#password-confirm{
+    margin-top: 3.6rem;
+    padding-top: 2px;
     font-weight: bold;
     width: 320px;
     border: #1D9396 solid 1rem;
     background-color: #1D9396;
     border-radius: 2.5rem;
     color:white;
+}
+
+.form-group {
+    text-align: center;
+}
+
+#inscription{
+    margin: 3.6rem 0;
+    background-color:#F6DF19;
+    border: #F6DF19 solid 1rem;
+    border-radius: 2.5rem;
+    color: #1D9396;
+    font-weight: bold;
+    font-size: 10px;
+
 }
 
 /**
