@@ -26,6 +26,8 @@ li {
     list-style: none;
 }
 
+
+/* HEADER */
 header {
     background-color: #1D9396;
     padding: 3rem 0;
@@ -34,6 +36,18 @@ header {
 #logo {
     width: 30rem;
 }
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    width: 15rem;
+    font-size: 1.6rem;
+}
+
+
+
 /* MAIN */
 .categorie {
     color: #115557;
@@ -64,7 +78,7 @@ hr {
     position: relative;
     display: flex;
     justify-content: center;
-    color: #fff:
+    color: #fff;
 }
 
 .serie-hover {
@@ -85,7 +99,6 @@ hr {
     border-radius: 2.5rem;
 }
 
-<<<<<<< HEAD
 .title {
     padding: 2rem;
     padding-bottom: 0;
@@ -93,10 +106,12 @@ hr {
 
 .resume p {
     padding: 0 2rem;
-=======
+}
+
+/**
 .contentSerie{
     margin-left: 15%;
     margin-right: 15%;
     margin-top: -5%;
->>>>>>> 72ef3bd429e2b61a68c28d9a43faaccb7b62ddb5
 }
+**/
