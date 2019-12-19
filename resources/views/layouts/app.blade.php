@@ -41,7 +41,7 @@
                 </form>
             </li>
             <li class="recherche">
-                <input type="text" name="saisie" value="Recherche">
+                <input type="text" name="saisie" placeholder="Recherche">
                 <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
 
 

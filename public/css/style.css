@@ -11,7 +11,8 @@ html {
 
 .container {
     margin: 0 auto;
-    width: 120rem;
+    max-width: 120rem;
+    width: 100%;
 }
 
 body {
@@ -40,13 +41,44 @@ header {
 
 .menu {
     display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 2rem 0;
 }
 
 .menu li {
+    font-size: 1.6rem;
+    margin-left: 2em;
+}
+
+.menu select {
+    background-color: #fff;
+    border: 0;
+    color: #115557;
+    font-size: 1.6rem;
     width: 15rem;
+}
+
+.menu li a {
+    color: #115557;
+}
+
+.recherche {
+    display: flex;
+}
+
+.recherche input[type='text'] {
+    background-color: #fff;
+    border: 0;
+    color: #115557;
+    width: 10rem;
     font-size: 1.6rem;
 }
 
+.recherche input[type='image'] {
+    width: 20px;
+    height: 20px;
+}
 
 
 /* MAIN */
@@ -69,25 +101,15 @@ hr {
 
 #main ul {
     list-style: none;
-/*
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-*/
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 10rem;
-    grid-row-gap: 5rem;
+    grid-row-gap : 5rem;
 }
 
-@media screen and (max-width:800px) {
-    #main ul {
-        grid-template-columns: 1fr;
-        grid-column-gap: 0;
-    }
-}
-    
+#main ul li {
+    display: flex;
+    justify-content: center;
+}   
     
 .serie {
     position: relative;
@@ -95,6 +117,7 @@ hr {
     justify-content: center;
     color: #fff;
     width: 225px;
+    line-height: 3rem;
 }
 
 .serie-hover {
@@ -104,7 +127,8 @@ hr {
     border-radius: 2.5rem;
     height: 100%;
     color: #fff;
-    max-width: 225px;
+    max-width: 215px;
+    width: 100%;
 }
 
 .serie-hover:hover {
@@ -114,15 +138,12 @@ hr {
 
 .affiche {
     border-radius: 2.5rem;
+    height: 30rem;
 }
 
 .title {
     padding: 2rem;
     padding-bottom: 0;
-}
-
-.resume p {
-    padding: 0 2rem;
 }
 
 #inscr{
@@ -138,3 +159,25 @@ hr {
     margin-top: -5%;
 }
 **/
+
+@media screen and (max-width:1000px) {
+    #main ul {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .serie-hover {
+        opacity: 1;
+        position: inherit;
+        background-color: #fff;
+        color: #115557;
+        border-radius: 0;
+        
+    }
+}
+
+@media screen and (max-width:800px) {
+    #main ul {
+        grid-template-columns: 1fr;
+    }
+    
+}
