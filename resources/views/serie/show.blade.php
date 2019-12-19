@@ -96,20 +96,24 @@
 
         @if (!$comments->isEmpty())
             @foreach($comments as $comment)
-                @if ($comment->validated === 1 || (Auth::check() && Auth::user()->administrateur === 1))
+                @if ($comment->validated === 1)
                     <h2>{{ $comment->utilisateur->name }}</h2>
                     <h2>{{ $comment->note }} / 10</h2>
-                    @if (Auth::check() && Auth::user()->administrateur === 1 && $comment->validated === 0)
-                        <form action="{{ route('comment.valid', $comment->id) }}" method="post">
-                            {{ csrf_field() }}
-                            <button type="submit">Valider</button>
-                        </form>
+                    <p>{{ $comment->content }}</p>
+                @elseif (Auth::check() && Auth::user()->administrateur === 1)
+                    <h2>{{ $comment->utilisateur->name }}</h2>
+                    <h2>{{ $comment->note }} / 10</h2>
 
-                        <form action="{{ route('comment.reject', $comment->id) }}" method="post">
-                            {{ csrf_field() }}
-                            <button type="submit">refuser</button>
-                        </form>
-                    @endif
+                    <form action="{{ route('comment.valid', $comment->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit">Valider</button>
+                    </form>
+
+                    <form action="{{ route('comment.reject', $comment->id) }}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit">refuser</button>
+                    </form>
+
                     <p>{{ $comment->content }}</p>
                 @endif
             @endforeach
