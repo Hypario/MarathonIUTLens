@@ -159,6 +159,7 @@ header {
 
 .info-serie {
     display: flex;
+    font-size: 1.6rem;
 }
 
 .info-serie-ecrit {
@@ -181,9 +182,28 @@ header {
     background-color: #115557;
 }
 
+.commentaire {
+    background-color: #115557;
+    border-radius: 2.5rem;
+    color: #fff;
+    padding: 2rem;
+    line-height: 3rem;
+}
+
 .episodes {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 2rem;
+    font-size: 1.6rem;
+}
+
+.episodes a {
+    color: #115557;
+}
+
+.miniature {
+    width: 22rem;
+    border-radius: 2rem;
 }
 
 /* INCRIPTION */
@@ -200,7 +220,7 @@ header {
     border-radius: 2.5rem;
 }
 
-#email,#password,#password-confirm{
+#name, #email,#password,#password-confirm{
     margin-top: 3.6rem;
     padding-top: 2px;
     font-weight: bold;
@@ -226,6 +246,10 @@ header {
 
 }
 
+.invalid-feedback {
+    display: block;
+}
+
 #previousEp{
     position: absolute;
     top: 700px;
@@ -249,7 +273,7 @@ header {
 }
 
 #infoEpisode{
-    font-size: 20px;
+    font-size: 1.6rem;
     right: 25%;
     position: absolute;
     top: 400px;
@@ -272,6 +296,7 @@ header {
     padding-top: 138px;
 
 }
+
 #retourSerie{
     font-size: 15px;
     color: #115557;
