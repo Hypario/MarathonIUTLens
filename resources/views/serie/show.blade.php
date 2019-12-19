@@ -33,7 +33,7 @@
                     @if($isSerieLiked)
                         Vous aimez déjà la série
                     @else
-                        <button>Aimer la série</button>
+                        <a href="">Aimer la série</a>
                     @endif
                 </p>
             </div>
