@@ -151,6 +151,7 @@ hr {
 }
 
 #inscr{
+    color:white;
     margin-left: 250px;
     padding-top: 1.8rem;
     width: 660px;
@@ -198,7 +199,7 @@ hr {
 #nextEP{
     position: absolute;
     top: 700px;
-    left: 1190px;
+    right: 50%;
 }
 
 #nextEP,#previousEp{
@@ -213,10 +214,11 @@ hr {
 
 #infoEpisode{
     font-size: 20px;
-    margin-right: 675px;
+    right: 25%;
     position: absolute;
     top: 400px;
-    left: 1300px;
+    left: 51%;
+
 }
 
 #imageEpisode{
