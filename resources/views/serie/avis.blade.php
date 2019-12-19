@@ -4,7 +4,7 @@
 @section('content')
 <form action="{{ route('admin.sndavis', $serie->id) }}" method="post">
     @if(!is_null($serie->avis) && !empty($serie->avis))
-        L'avis actuel est : <br><textarea disabled value="{{ $serie->avis }}" rows="5" cols="33" style="width:50%; height: 50%"></textarea><br>
+        <h3>L'avis actuel est :</h3> <br><textarea disabled value="" rows="5" cols="33" style="width:50%; height: 50%">{{ $serie->avis }}</textarea><br><br>
     @endif
         {{ csrf_field() }}
         <textarea rows="5" cols="33" style="width:50%; height: 50%" name="avis" placeholder="Entrez ici l'avis de la rédaction" ></textarea><br>

@@ -141,8 +141,13 @@ class SerieController extends Controller
 
     public function send_avis(Request $request, $id) {
 
+        $serie= Serie::find($id);
 
+        $serie->avis = $request->avis;
 
+        $serie->save();
+
+        return redirect()->back();
 
     }
 }
