@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Episode;
 use App\Serie;
+use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -116,5 +117,32 @@ class SerieController extends Controller
         if ($episodes->find($idEpisode))
             return true;
         return false;
+    }
+
+    public function modif_avis($id) {
+        // id c'est l'identifiant de la série
+
+        // on importe la série
+        $serie = Serie::find($id);
+        if (!is_null($serie)) {
+
+
+
+        if ($user = Auth::user())
+            return view("serie.avis",["serie"=>$serie]);
+
+
+
+
+        }
+            return redirect("404");
+
+    }
+
+    public function send_avis(Request $request, $id) {
+
+
+
+
     }
 }
