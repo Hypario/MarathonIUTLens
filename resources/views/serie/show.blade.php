@@ -41,7 +41,7 @@
 
 
 
-        @if($series->avis = null)
+        @if(!is_null($series->avis))
             <div class="avisSerie">
                 <p><strong>Avis de la rédaction: </strong>{{$series->avis}}</p>
             </div>
@@ -50,7 +50,7 @@
                 <p><strong>Avis de la rédaction : </strong> Pas encore d'avis de la rédaction disponible :(</p>
             </div>
         @endif
-        @if($series->urlAvis != null)
+        @if(!is_null($series->urlAvis))
             <div class="avisVideoSerie">
                 <p><strong>Vidéo critique : </strong></p>
 
