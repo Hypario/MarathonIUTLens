@@ -56,7 +56,14 @@ header {
     border: 0;
     color: #115557;
     font-size: 1.6rem;
-    width: 15rem;
+    width: 13rem;
+}
+
+.menu form input[type="submit"] {
+    background-color: #fff;
+    color: #115557;
+    border: 0;
+    font-size: 1.6rem;
 }
 
 .menu li a {
@@ -92,7 +99,7 @@ header {
     text-transform: uppercase;
 }
 
-hr {
+.hr-horizontal {
     width: 15rem;
     background-color: #115557;
     padding: 0.1rem;
@@ -150,6 +157,36 @@ hr {
     padding-bottom: 0;
 }
 
+.info-serie {
+    display: flex;
+}
+
+.info-serie-ecrit {
+    padding: 0 30rem 0 2rem;
+    line-height: 2rem;
+}
+
+.info-serie-ecrit p {
+    margin-bottom: 1rem;
+}
+
+.resume {
+    width: 50rem;
+    margin: 0 2rem;
+}
+
+.hr-vertical {
+    height: 30rem;
+    width: 0.4rem;
+    background-color: #115557;
+}
+
+.episodes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* INCRIPTION */
 #inscr{
     margin-left: 250px;
     padding-top: 1.8rem;
@@ -161,7 +198,6 @@ hr {
     background-color: #115557;
     border-radius: 2.5rem;
 }
-
 
 #email,#password,#password-confirm{
     margin-top: 3.6rem;
@@ -189,14 +225,8 @@ hr {
 
 }
 
-/**
-.contentSerie{
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: -5%;
-}
-**/
 
+/* RESPONSIVE */
 @media screen and (max-width:1000px) {
     #main ul {
         grid-template-columns: 1fr 1fr;
@@ -208,7 +238,6 @@ hr {
         background-color: #fff;
         color: #115557;
         border-radius: 0;
-        
     }
 }
 
@@ -216,5 +245,4 @@ hr {
     #main ul {
         grid-template-columns: 1fr;
     }
-    
 }

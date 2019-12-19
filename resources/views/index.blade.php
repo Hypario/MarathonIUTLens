@@ -4,7 +4,7 @@
 
     <div>
         <h2 class="titre">Les plus vues</h2>
-        <hr>
+        <hr class="hr-horizontal">
         <ul>
             @foreach($mostViewed as $serie)
                 <li>
@@ -24,7 +24,7 @@
     
     <div>
         <h2 class="titre">Les plus commentées</h2>
-        <hr>
+        <hr class="hr-horizontal">
         <ul>
             @foreach($mostReviewed as $serie)
                 <li>
