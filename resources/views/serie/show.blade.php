@@ -57,7 +57,7 @@
                     <p>
                         <video controls width="250">
 
-                            <source src={{$series->urlAvis}}
+                            <source src={{url($series->urlAvis)}}
                                 type="video/mp4">
                             Désolé, votre navigateur ne supporte pas les vidéos :(.
                         </video>
@@ -73,7 +73,6 @@
                 <a href="{{ route("admin.avis",$series->id) }}">Changer l'avis administrateur</a>
             @endif
         </div>
-
 
 
         <div>
