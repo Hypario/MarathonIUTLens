@@ -25,6 +25,14 @@ class MainController extends Controller
         return view("index", compact("series", "genres"));
     }
 
+    public function genre($idGenre) {
+        if (Genre::find($idGenre)) {
+            $genres = Genre::all();
+            $series = Serie::with('genres')->where('genre_id', '=', $idGenre);
+        }
+        return redirect()->back();
+    }
+
     /**
      * Random series showed in the landing page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

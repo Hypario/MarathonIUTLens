@@ -20,6 +20,7 @@ Auth::routes();
 
 // landing page and sorting
 Route::get('/', 'MainController@index')->name('home');
+Route::get('/genre/{genre}', 'MainController@genre')->name('home.genre');
 
 // show series
 Route::get('/serie', 'SerieController@index')->name('serie.index');
