@@ -126,9 +126,30 @@ hr {
 }
 
 #inscr{
+    font-size: 19px;
+    font-weight: bold;
+    border: #115557 solid 1rem;
+    background-color: #115557;
+    border-radius: 2.5rem;
+}
+
+#name,#email{
+    font-weight: bold;
+    width: 640px;
     border: #1D9396 solid 1rem;
     background-color: #1D9396;
     border-radius: 2.5rem;
+    color:white;
+}
+
+
+#password,#password-confirm{
+    font-weight: bold;
+    width: 320px;
+    border: #1D9396 solid 1rem;
+    background-color: #1D9396;
+    border-radius: 2.5rem;
+    color:white;
 }
 
 /**
