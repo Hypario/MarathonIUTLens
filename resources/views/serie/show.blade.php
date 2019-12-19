@@ -29,11 +29,11 @@
         @if($user["authentificated"])
             <div>
                 <p>
-                    <b>Appréciation de la série : </b>
-                    @if($isSerieLiked)
-                        Vous aimez déjà la série
+                    <b>Etat de l'épisode : </b>
+                    @if($isSerieSeen)
+                        Vous avez déjà vu la série
                     @else
-                        <a href="">Aimer la série</a>
+                        <a href="{{ route('serie.see',$series->id) }}">Voir la série</a>
                     @endif
                 </p>
             </div>
