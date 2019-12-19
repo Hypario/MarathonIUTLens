@@ -188,6 +188,7 @@ header {
 
 /* INCRIPTION */
 #inscr{
+    color:white;
     margin-left: 250px;
     padding-top: 1.8rem;
     width: 660px;
@@ -225,6 +226,84 @@ header {
 
 }
 
+#previousEp{
+    position: absolute;
+    top: 700px;
+
+}
+
+#nextEP{
+    position: absolute;
+    top: 700px;
+    right: 50%;
+}
+
+#nextEP,#previousEp{
+    margin: 3.6rem 0;
+    background-color:#F6DF19;
+    border: #F6DF19 solid 1rem;
+    border-radius: 2.5rem;
+    color: #1D9396;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+#infoEpisode{
+    font-size: 20px;
+    right: 25%;
+    position: absolute;
+    top: 400px;
+    left: 51%;
+
+}
+
+#imageEpisode{
+    width: 600px;
+    height: 336px;
+    border-radius: 2.5rem;
+    color: white;
+    background-color: #1D9396;
+
+    text-align: center;
+}
+
+.textImage{
+    font-size: 30px;
+    padding-top: 138px;
+
+}
+#retourSerie{
+    font-size: 15px;
+    color: #115557;
+}
+
+#stats{
+    margin-top: 5%;
+    font-size: 15px;
+}
+
+#infoUser{
+    font-size: 15px;
+}
+
+#serieUser{
+    font-weight: bold;
+    color:white;
+    background-color: #115557;
+    border-radius: 2.5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+}
+
+#comUser{
+    color:white;
+    background-color: #1D9396;
+    border-radius: 2.5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:1000px) {
