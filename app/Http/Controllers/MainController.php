@@ -46,7 +46,7 @@ class MainController extends Controller
             ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume"))
             ->join("episodes", "series.id", "=", "episodes.serie_id")
             ->join("seen", "episodes.id", "=", "seen.episode_id")
-            ->groupBy( "series.id", "series.nom", "series.resume")
+            ->groupBy("series.id", "series.nom", "series.resume")
             ->orderBy("vues_count", "desc")
             ->get();
 
@@ -57,23 +57,24 @@ class MainController extends Controller
      * Most reviewed series in the landing page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    private function reviews() {
+    private function reviews()
+    {
 
         $retour = Serie::withCount('comments')->orderBy('comments_count', 'desc')->get();
 
         return view("reviews", compact("retour"));
     }
 
-    public function  user() {
+    public function user()
+    {
         if ($user = Auth::user()) {
 
 
             $data = array();
 
             if ($user->administrateur == 1) {
-                $data["comVerif"] = Comment::where("validated","=",0)->select("*")->get();
-                }
-
+                $data["comVerif"] = Comment::where("validated", "=", 0)->select("*")->get();
+            }
 
 
             $data["user"] = $user;
@@ -81,14 +82,14 @@ class MainController extends Controller
             $data["stats"] = array();
 
             // récupération nbr de épisodes vu ...
-            $data["stats"]["epvu"] = DB::select(DB::raw("SELECT COUNT(*) AS nb FROM seen WHERE user_id=".$user->id))[0]->nb;
+            $data["stats"]["epvu"] = DB::select(DB::raw("SELECT COUNT(*) AS nb FROM seen WHERE user_id=" . $user->id))[0]->nb;
 
             // récupération nbr de commentaires
-            $data["stats"]["nbcomm"] = Comment::where("user_id","=",$user->id)->count("*");
+            $data["stats"]["nbcomm"] = Comment::where("user_id", "=", $user->id)->count("*");
 
             // Récupération commentaires
 
-            $data["comments"] = Comment::where("user_id","=",$user->id)->select("*")->orderBy("serie_id")->get();
+            $data["comments"] = Comment::where("user_id", "=", $user->id)->select("*")->orderBy("serie_id")->get();
 
             // récupération des séries
 
@@ -96,13 +97,13 @@ class MainController extends Controller
 
             // récupération séries vues
 
-         //   $data["seriesvues"] = DB::table("seen")->select("id_serie")->where("user_id","=",$user->id)->get();
+            //   $data["seriesvues"] = DB::table("seen")->select("id_serie")->where("user_id","=",$user->id)->get();
 
-            $data["seriesvues"] = Episode::whereIn("id", DB::table("seen")->select("episode_id")->where("user_id","=",$user->id))->select("serie_id")->groupBy("serie_id")->get();
+            $data["seriesvues"] = Episode::whereIn("id", DB::table("seen")->select("episode_id")->where("user_id", "=", $user->id))->select("serie_id")->groupBy("serie_id")->get();
 
 
             // Récupération durée passée
-            $data["stats"]["duree"] = DB::select(DB::raw("SELECT SUM(duree)/60 AS somme FROM episodes JOIN seen ON episodes.id = seen.user_id WHERE seen.user_id = ".$user->id))[0]->somme;
+            $data["stats"]["duree"] = DB::select(DB::raw("SELECT SUM(duree)/60 AS somme FROM episodes JOIN seen ON episodes.id = seen.user_id WHERE seen.user_id = " . $user->id))[0]->somme;
 
             return view("auth.user", compact("data"));
         } else {
@@ -110,9 +111,6 @@ class MainController extends Controller
         }
 
     }
-
-
-
 
 
 }
