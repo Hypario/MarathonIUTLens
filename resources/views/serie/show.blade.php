@@ -45,7 +45,7 @@
                     <video controls width="250">
 
                         <source src={{$series->urlAvis}}
-                                type="video/mp4">
+                            type="video/mp4">
                         Désolé, votre navigateur ne supporte pas les vidéos :(.
                     </video>
                 </p>
@@ -62,9 +62,11 @@
                 @foreach($episodes as $episode)
                     <div>
                         <a href="{{ route('episode.show', [$series->id, $episode->numero]) }}">
-                            <img src="{{ public_path($episode->urlImage) }}" />
-                        </a>
+                            @if ($episode->urlImage)
+                                <img src="{{ url($episode->urlImage) }}"/>
+                            @endif
                         Episode n°{{ $episode->numero }} {{ $episode->nom }}
+                        </a>
                     </div>
                 @endforeach
             @endforeach
