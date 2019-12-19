@@ -5,10 +5,53 @@ namespace App\Http\Controllers;
 
 use App\Episode;
 use App\Serie;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class SerieController extends Controller
 {
+    public function getAvisSerie($id, $user) {
+        // on récupére tous les épisodes de la-dite série
+        $eps = Episode::all()->where("serie_id","=",$id);
+
+        // on récupére les infos sur l'utilisateur
+
+        $vu = DB::table("seen")->select("episode_id")->where("user_id","=",$user->id)->get();
+
+        $dt = [];
+
+        foreach ($vu as $v) {
+            array_push($dt,$v->episode_id);
+        }
+
+
+
+        foreach ($eps as $episode) {
+
+
+
+            if (!in_array($episode->id,$dt)) {
+                return false;
+            }
+
+
+    return true;
+    }
+    }
+
     public function show($id) {
+
+        $user = [];
+        if ($myuser = Auth::user()) {
+            $user["authentificated"] = true;
+            $user["userdata"] = $myuser;
+            $isSerieLiked = $this->getAvisSerie($id, $myuser);
+
+
+        } else {
+            $user["authentificated"] = false;
+        }
 
         $series = Serie::find($id);
 
@@ -20,7 +63,7 @@ class SerieController extends Controller
 
         $comments = $series->comments()->get();
 
-        return view('serie.show', compact("series", "saisons", "comments"));
+        return view('serie.show', compact("series", "saisons", "comments","user","isSerieLiked"));
     }
 
     public function saison($num_serie,$num_saison){
