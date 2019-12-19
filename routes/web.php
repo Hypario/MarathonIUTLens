@@ -38,3 +38,5 @@ Route::get("/userpage","MainController@user")->name('user.home');
 Route::get('/seeSerie/{id}', "SerieController@see")->name("serie.see");
 
 Route::get('/seeEpisode/{id}', "EpisodeController@see")->name("episode.see");
+Route::get('/modifAvis/{id}',"SerieController@modif_avis")->name("admin.avis");
+Route::post('/modifAvis/{id}/send',"SerieController@send_avis")->name("admin.sndavis");

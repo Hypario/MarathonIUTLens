@@ -5,39 +5,24 @@ namespace App\Http\Controllers;
 
 use App\Episode;
 use App\Serie;
-use http\Client\Curl\User;
+use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class SerieController extends Controller
 {
 
     public function see($id)
     {
-        if ($myUser = Auth::user()) {
+        if (Auth::check()) {
+            $series = Serie::all();
 
-            $episodes = Episode::all()->where("serie_id", "=", $id);
-
-            $epliked = DB::table("seen")->select("*")->where("user_id", "=", $myUser->id)->get();
-
-            $dt = [];
-            foreach ($epliked as $ep) {
-                array_push($dt, $ep->episode_id);
+            if ($series->find($id) && !$this->SeenSerie($id)) {
+                $episodes = Serie::find($id)->episodes()->get();
+                Auth::user()->seen()->syncWithoutDetaching($episodes);
             }
-
-
-            foreach ($episodes as $episode) {
-                if (!in_array($episode->id, $dt)) {
-                    DB::table("seen")->insert(["user_id" => $myUser->id, "episode_id" => $episode->id]);
-                }
-            }
-
             return redirect()->back();
-
-        } else {
-            echo "Cette action n'est pas censée arriver";
-
         }
         return redirect('404');
     }
@@ -45,7 +30,7 @@ class SerieController extends Controller
     public function show($id)
     {
         if ($myuser = Auth::check()) {
-            $isSerieSeen = $this->SeeSerie($id);
+            $isSerieSeen = $this->SeenSerie($id);
         } else {
             $isSerieSeen = null;
         }
@@ -113,7 +98,7 @@ class SerieController extends Controller
         // redirect to a 404
     }
 
-    private function SeeSerie($id): bool
+    private function SeenSerie($id): bool
     {
         $seen = Auth::user()->seen()->get();
         $serie = Serie::find($id);
@@ -132,5 +117,32 @@ class SerieController extends Controller
         if ($episodes->find($idEpisode))
             return true;
         return false;
+    }
+
+    public function modif_avis($id) {
+        // id c'est l'identifiant de la série
+
+        // on importe la série
+        $serie = Serie::find($id);
+        if (!is_null($serie)) {
+
+
+
+        if ($user = Auth::user())
+            return view("serie.avis",["serie"=>$serie]);
+
+
+
+
+        }
+            return redirect("404");
+
+    }
+
+    public function send_avis(Request $request, $id) {
+
+
+
+
     }
 }
