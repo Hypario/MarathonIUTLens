@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Episode;
+use App\Genre;
 use App\Serie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,9 @@ class MainController extends Controller
     {
         $series = Serie::all();
 
-        return view("index", compact("series"));
+        $genres = Genre::all();
+
+        return view("index", compact("series", "genres"));
     }
 
     /**
