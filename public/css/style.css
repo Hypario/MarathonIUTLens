@@ -10,7 +10,8 @@ html {
 }
 
 .container {
-    margin: 0 40rem;
+    margin: 0 auto;
+    width: 120rem;
 }
 
 body {
@@ -68,17 +69,32 @@ hr {
 
 #main ul {
     list-style: none;
+/*
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+*/
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 10rem;
     grid-row-gap: 5rem;
 }
 
+@media screen and (max-width:800px) {
+    #main ul {
+        grid-template-columns: 1fr;
+        grid-column-gap: 0;
+    }
+}
+    
+    
 .serie {
     position: relative;
     display: flex;
     justify-content: center;
     color: #fff;
+    width: 225px;
 }
 
 .serie-hover {
@@ -88,6 +104,7 @@ hr {
     border-radius: 2.5rem;
     height: 100%;
     color: #fff;
+    max-width: 225px;
 }
 
 .serie-hover:hover {
