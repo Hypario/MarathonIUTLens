@@ -48,7 +48,23 @@ class SerieController extends Controller
 
         $comments = $series->comments()->get();
 
-        return view('serie.show', compact("series", "saisons", "comments", "isSerieSeen"));
+        $moyenne = null;
+        $sum = 0;
+        $nb = 0;
+
+        foreach ($comments as $comment) {
+            if ($comment->validated === 1) {
+                $sum += $comment->note;
+                $nb++;
+            }
+        }
+
+        if ($nb > 0) {
+            $moyenne = $sum / $nb;
+        }
+
+
+        return view('serie.show', compact("series", "saisons", "comments", "isSerieSeen","moyenne"));
     }
 
     public function saison($num_serie, $num_saison)
@@ -160,12 +176,14 @@ class SerieController extends Controller
         $serie = Serie::find($id);
 
         $serie->avis = $request->avis;
-        $file = $request->file('file_up');
-        $filename = $file->getClientOriginalName();
-        $path = public_path() . '/uploads/';
-        $newurl = $file->move($path, $filename);
+        if (!is_null($request->file('file_up'))) {
+            $file = $request->file('file_up');
+            $filename = $file->getClientOriginalName();
+            $path = public_path() . '/uploads/';
+            $newurl = $file->move($path, $filename);
 
-        $serie->urlAvis = str_replace(public_path(), "", $newurl);
+            $serie->urlAvis = str_replace(public_path(), "", $newurl);
+        }
 
         $serie->save();
 

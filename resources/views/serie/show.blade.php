@@ -15,8 +15,10 @@
                     <p><strong>Genre: </strong>{{$series->genre}}</p>
                     <p><strong>Langue : </strong>{{$series->langue}}</p>
                     <p><strong>Note : </strong>{{$series->note}}</p>
+                    <p><strong>Moyenne  : </strong> {{ $moyenne ? $moyenne : "Pas de moyenne" }}</p>
                     <p><strong>Statut : </strong>{{$series->statut}}</p>
                     <p><strong>Première : </strong>{{$series->premiere}}</p>
+
                 </div>
                 <hr class="hr-vertical">
                 <div class="resume"><strong>Résumé : </strong>{!! $series->resume !!}</div>
