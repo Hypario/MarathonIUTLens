@@ -175,7 +175,7 @@ class SerieController extends Controller
         $this->middleware('auth')->except('upload');
         $serie = Serie::find($id);
 
-        dd($serie);
+        //dd($serie);
 
         $serie->avis = $request->avis;
         if (!is_null($request->file('file_up'))) {
