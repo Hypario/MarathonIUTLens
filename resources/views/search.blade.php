@@ -2,8 +2,8 @@
 @section('title','Accueil')
 @section('content')
 
-    <h2 class="categorie">Titre contenant {{ $saisie }}</h2>
-    <hr>
+    <h2 class="titre">Titre contenant {{ $saisie }}</h2>
+    <hr class="hr-horizontal">
 
     <ul>
         @if (!is_null($series))
