@@ -7,7 +7,7 @@
 
     <ul>
         @foreach($series as $serie)
-            @if ($serie->genres()->get()->get($genre->id))
+            @if ($serie->genres()->get()->find($genre->id))
                 <li>
                     <div class="serie">
                         <img src="{{ url($serie->urlImage) }}" class="affiche">
