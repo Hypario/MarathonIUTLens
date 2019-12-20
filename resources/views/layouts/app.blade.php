@@ -41,8 +41,10 @@
                 </form>
             </li>
             <li class="recherche">
-                <input type="text" name="saisie" placeholder="Recherche">
-                <input type="image" src="{{ url('img/loupe.png') }}" name="submit">
+                <form action="{{ route('serie.sort') }}" method="get">
+                    <input type="text" name="saisie" placeholder="Recherche">
+                    <button type="submit" style="border: none; background-color: transparent; cursor: pointer;"><img src="{{ url('img/loupe.png') }}" alt=""></button>
+                </form>
             </li>
         @endif
         @guest

@@ -21,29 +21,12 @@ class MainController extends Controller
         $mostViewed = $this->popular();
         $mostReviewed = $this->reviews();
 
+        $mostRecent = Serie::orderBy('premiere', 'desc')
+            ->take(4)->get();
+
         $genres = Genre::all();
 
-        return view("index", compact("genres", "mostViewed", "mostReviewed"));
-    }
-
-    public function genre($idGenre)
-    {
-        if (Genre::find($idGenre)) {
-            $genres = Genre::all();
-            $series = Serie::with('genres')->where('genre_id', '=', $idGenre);
-        }
-        return redirect()->back();
-    }
-
-    /**
-     * Random series showed in the landing page
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    private function random()
-    {
-        $series = Serie::inRandomOrder()->get();
-
-        return view("index", compact("series"));
+        return view("index", compact("genres", "mostViewed", "mostReviewed", "mostRecent"));
     }
 
     /**

@@ -107,6 +107,10 @@ class SerieController extends Controller
             $series = Serie::all();
 
             return view("genre", compact("genre", "series"));
+        } else if ($saisie = Input::get('saisie')) {
+            $series = Serie::whereRaw("UPPER(nom) LIKE '%" . strtoupper($saisie) . "%'")->get();
+
+            return view('search', compact("saisie", "series"));
         }
         return redirect('404');
     }
