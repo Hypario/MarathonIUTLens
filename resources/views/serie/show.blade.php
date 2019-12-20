@@ -39,10 +39,11 @@
         </div>
 
         <div>
-            @if($series->avis = null)
+            @if($series->avis)
                 <div>
                     <h2 class="titre">L'avis de la rédaction</h2>
                     <hr class="hr-horizontal">
+                    <p>{{ $series->avis }}</p>
                 </div>
             @else
                 <div>
