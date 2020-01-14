@@ -10,7 +10,7 @@
             </div>
 
             <div class="info-serie">
-                <img src="{{ url($series->urlImage) }}" class="affiche"/>
+                <img src="{{ url($series->image) }}" class="affiche"/>
                 <div class="info-serie-ecrit">
                     <p><strong>Genre: </strong>{{$series->genre}}</p>
                     <p><strong>Langue : </strong>{{$series->langue}}</p>

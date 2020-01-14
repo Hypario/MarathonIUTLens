@@ -35,11 +35,11 @@ class MainController extends Controller
     private function popular()
     {
         return DB::table("series")
-            ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume, series.note, series.premiere, series.urlImage"))
+            ->select(DB::raw("Count(*) as vues_count, series.id, series.nom, series.resume, series.note, series.premiere, series.image"))
             ->join("episodes", "series.id", "=", "episodes.serie_id")
             ->join("seen", "episodes.id", "=", "seen.episode_id")
             ->limit(4)
-            ->groupBy("series.id", "series.nom", "series.resume", 'series.note', 'series.premiere', 'series.urlImage')
+            ->groupBy("series.id", "series.nom", "series.resume", 'series.note', 'series.premiere', 'series.image')
             ->orderBy("vues_count", "desc")
             ->get();
     }

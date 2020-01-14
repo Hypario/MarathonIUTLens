@@ -9,7 +9,7 @@
             @foreach($mostViewed as $serie)
                 <li>
                     <div class="serie">
-                        <img src="{{ url($serie->urlImage) }}" class="affiche">
+                        <img src="{{ url($serie->image) }}" class="affiche">
                         <a class="serie-hover" href="{{ route('serie.show', $serie->id) }}">
                             <h2 class="title">{{ $serie->nom }} <br> 
                                 {{ date('Y', strtotime($serie->premiere)) }} <br> 
@@ -29,7 +29,7 @@
             @foreach($mostReviewed as $serie)
                 <li>
                     <div class="serie">
-                        <img src="{{ url($serie->urlImage) }}" class="affiche">
+                        <img src="{{ url($serie->image) }}" class="affiche">
                         <a class="serie-hover" href="{{ route('serie.show', $serie->id) }}">
                             <h2 class="title">{{ $serie->nom }} <br> 
                                 {{ date('Y', strtotime($serie->premiere)) }} <br> 
@@ -51,7 +51,7 @@
             @foreach($mostRecent as $serie)
                 <li>
                     <div class="serie">
-                        <img src="{{ url($serie->urlImage) }}" class="affiche">
+                        <img src="{{ url($serie->image) }}" class="affiche">
                         <a class="serie-hover" href="{{ route('serie.show', $serie->id) }}">
                             <h2 class="title">{{ $serie->nom }} <br>
                                 {{ date('Y', strtotime($serie->premiere)) }} <br>

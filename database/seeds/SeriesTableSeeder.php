@@ -25,7 +25,7 @@ class SeriesTableSeeder extends Seeder {
                 'note' => $obj->note,
                 'statut' => $obj->statut,
                 'premiere' => $obj->premiere,
-                'urlImage' => $obj->urlImage,
+                'image' => $obj->urlImage,
                 'avis' => $obj->avis,
             ]);
             $ids = [];

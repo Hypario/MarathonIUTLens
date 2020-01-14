@@ -21,7 +21,7 @@ class CreateSeriesTable extends Migration
             $table->decimal('note', 4, 2)->nullable();
             $table->string('statut', 64);
             $table->date('premiere');
-            $table->string('urlImage');
+            $table->string('image');
             $table->text('avis')->nullable();
             $table->text('urlAvis')->nullable();
             $table->timestamps();
